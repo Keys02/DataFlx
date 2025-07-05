@@ -1,15 +1,14 @@
 package org.dataflx;
+import java.util.List;
 import java.util.Scanner;
 import java.util.ArrayList;
 
 public class ApplicationController
 {
-    private AlgorithmRepository algorithmRepository;
     private StageController stageController;
 
     // Constructor
     public ApplicationController() {
-        this.algorithmRepository = new AlgorithmRepository();
         this.stageController = new StageController();
     }
 
@@ -18,7 +17,6 @@ public class ApplicationController
 
         switch (operation) {
             case 1:
-
                 this.processSearch();
                 break;
             case 2:
@@ -38,17 +36,30 @@ public class ApplicationController
             case 0:
                 this.flushApp();
                 break;
-            case 1:
-                ArrayList<Double> sortDataSet = stageController.inputDataSet(new Scanner(System.in));
-                double searchNum = stageController.searchNumber(new Scanner(System.in));
-//                int searchedNumIndex =  AlgorithmRepository.sequentialSearch(sortDataSet, searchNum);
-//                System.out.println("The number can be found at index  " + searchedNumIndex);
-                break;
-            case 2:
-                break;
+            case 1: {
+//                    List<Object> userInputs = processDataSetAndSearchNum();
+//                    int searchedNumIndex = AlgorithmRepository.sequentialSearch((List<Double>) userInputs.getFirst(), (Double) userInputs.getLast());
+//                    System.out.println("The number can be found at index  " + searchedNumIndex);
+                    break;
+                }
+            case 2: {
+//                    List<Object> userInputs = processDataSetAndSearchNum();
+//                    int searchedNumIndex = AlgorithmRepository.binarySearch((List<Double>) userInputs.getFirst(), (Double) userInputs.getLast());
+//                    System.out.println("The number can be found at index  " + searchedNumIndex);
+                    break;
+                    }
             default:
                 stageController.searchOperation(new Scanner(System.in));
         }
+    }
+
+    private List<Object> processDataSetAndSearchNum() {
+        List<Double> sortDataSet = stageController.inputDataSet(new Scanner(System.in));
+        double searchNum = stageController.searchNumber(new Scanner(System.in));
+        List<Object> inputs = new ArrayList<>();
+        inputs.add(sortDataSet);
+        inputs.add(searchNum);
+        return inputs;
     }
 
     // Sorting operations controller
