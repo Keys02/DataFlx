@@ -43,20 +43,21 @@ public class ApplicationController
                     break;
                 }
             case 2: {
-                    List<Object> userInputs = this.prepareSearch("Linear search");
+                    List<Object> userInputs = this.prepareSearch("Binary search");
                     int searchedNumIndex = AlgorithmRepository.binarySearch((List<Double>) userInputs.getFirst(), (Double) userInputs.getLast());
                     System.out.println("The number can be found at index  " + searchedNumIndex);
                     break;
                     }
             default:
-                stageController.searchOperation(new Scanner(System.in));
+                stageController.displayInputError();
+                this.processSearch();
         }
     }
 
     private List<Object> prepareSearch(String notice) {
-        System.out.println("Algorithm:" + ANSI.BLUE + ANSI.BOLD + notice + ANSI.RESET);
+        System.out.println("Algorithm: " + ANSI.BLUE + ANSI.BOLD + notice + ANSI.RESET);
         List<Double> sortDataSet = stageController.inputDataSet(new Scanner(System.in));
-        System.out.println("Algorithm:" + ANSI.BLUE + ANSI.BOLD + notice + ANSI.RESET);
+        System.out.println("Algorithm: " + ANSI.BLUE + ANSI.BOLD + notice + ANSI.RESET);
         double searchNum = stageController.searchNumber(new Scanner(System.in));
         List<Object> inputs = new ArrayList<>();
         inputs.add(sortDataSet);

@@ -54,7 +54,7 @@ public class StageController
     }
 
     public ArrayList<Double> inputDataSet(Scanner scanner) {
-        System.out.println("Enter all numbers separated with comma or whitespace");
+        System.out.println(ANSI.ORANGE + "Enter all numbers separated with comma or whitespace" + ANSI.RESET);
         System.out.print("input> ");
         String numbersInput = scanner.nextLine();
         System.out.print("\n");
@@ -77,7 +77,7 @@ public class StageController
     }
 
     public double searchNumber(Scanner scanner) {
-        System.out.println("Enter the number you want to search");
+        System.out.println(ANSI.ORANGE + "Enter the number you want to search" + ANSI.RESET);
         System.out.print("input> ");
         double searchNum = scanner.nextDouble();
         System.out.print("\n");
