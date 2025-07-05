@@ -13,7 +13,10 @@ public class Application {
         System.out.println("Operation");
         System.out.println("1) Searching");
         System.out.println("2) Sorting");
+        System.out.print("input> ");
         int operation = scanner.nextInt();
+
+        System.out.println(ANSIColors.BLUE + operation + ANSIColors.RESET);
 
         if (operation == 1) {
             appCont.processSearch();

@@ -38,6 +38,8 @@ public class ApplicationController
         System.out.println("6) Radix sort");
         System.out.println("7) Shell sort");
 
+        // Enter choice
+        System.out.print("input> ");
         int sortAlgoOption = scanner.nextInt();
 
         if (sortAlgoOption == 1) {
@@ -61,6 +63,6 @@ public class ApplicationController
     }
 
     public void displayInputError() {
-        System.out.println("⚠️: Incorrect choice, try again");
+        System.out.println(ANSIColors.RED + "⚠️: Incorrect choice, try again" + ANSIColors.RESET);
     }
 }
