@@ -1,5 +1,7 @@
 package org.dataflx;
 import java.util.Scanner;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ApplicationController
 {
@@ -22,12 +24,38 @@ public class ApplicationController
 
         if (operation == 1) {
             this.processSearch();
+            ArrayList<Double> dataSet = inputDataSet(new Scanner(System.in));
         } else if(operation == 2) {
             this.processSort();
+            ArrayList<Double> dataSet = inputDataSet(new Scanner(System.in));
         } else {
             this.displayInputError();
             this.flushApp();
         }
+
+        this.scanner.close();
+    }
+
+    public ArrayList<Double> inputDataSet(Scanner dataSetInputs) {
+//        Scanner dataSetInputs = new Scanner(System.in);
+        System.out.println("Enter all numbers separated with comma or whitespace");
+        String numbersInput = dataSetInputs.nextLine();
+
+        String[] numbersToArr = numbersInput.split("[,\\s+(, )]+"); // Splitting with multiple delimiters
+
+        ArrayList<Double> nums = new ArrayList<Double>(numbersToArr.length);
+
+        for (String s : numbersToArr) {
+            try {
+                nums.add(Double.parseDouble(s));
+            } catch (NumberFormatException e) {
+                System.out.println("Warning: Enter only integers or decimals\n");
+                System.exit(0);
+            }
+        }
+
+        dataSetInputs.close();
+        return nums;
     }
 
     // Searching operations controller
@@ -96,4 +124,5 @@ public class ApplicationController
     public void displayInputError() {
         System.out.println(ANSI.RED + "⚠️: Incorrect choice, try again" + ANSI.RESET);
     }
+
 }
