@@ -23,16 +23,29 @@ public class ApplicationController extends StageController
         int operation = scanner.nextInt();
         System.out.print("\n");
 
-        if (operation == 1) {
-            this.processSearch();
-            ArrayList<Double> dataSet = inputDataSet(new Scanner(System.in));
-        } else if(operation == 2) {
-            this.processSort();
-            ArrayList<Double> dataSet = inputDataSet(new Scanner(System.in));
-        } else {
-            this.displayInputError();
-            this.flushApp();
+        switch (operation) {
+            case 1:
+                this.processSearch();
+                ArrayList<Double> searchDataSet = inputDataSet(new Scanner(System.in));
+                break;
+            case 2:
+                this.processSort();
+                ArrayList<Double> sortDataSet = inputDataSet(new Scanner(System.in));
+                break;
+            default:
+                this.displayInputError();
+                this.flushApp();
         }
+//        if (operation == 1) {
+//            this.processSearch();
+//            ArrayList<Double> dataSet = inputDataSet(new Scanner(System.in));
+//        } else if(operation == 2) {
+//            this.processSort();
+//            ArrayList<Double> dataSet = inputDataSet(new Scanner(System.in));
+//        } else {
+//            this.displayInputError();
+//            this.flushApp();
+//        }
         this.scanner.close();
     }
 
@@ -61,43 +74,76 @@ public class ApplicationController extends StageController
     // Searching operations controller
     public void processSearch() {
         int searchAlgoOption = this.searchOperationStage();
-        if (searchAlgoOption == 0) {
-            // Return to previous choices
-            this.flushApp();
-        } else if (searchAlgoOption == 1) {
-
-        } else if (searchAlgoOption == 2) {
-
-        } else {
-            this.searchOperationStage();
+        switch (searchAlgoOption) {
+            case 0:
+                this.flushApp();
+                break;
+            case 1:
+                break;
+            case 2:
+                break;
+            default:
+                this.searchOperationStage();
         }
+//        if (searchAlgoOption == 0) {
+//            // Return to previous choices
+//            this.flushApp();
+//        } else if (searchAlgoOption == 1) {
+//
+//        } else if (searchAlgoOption == 2) {
+//
+//        } else {
+//            this.searchOperationStage();
+//        }
     }
     // Sorting operations controller
     public void processSort() {
 
         int sortAlgoOption = this.sortOperationStage();
 
-        if (sortAlgoOption == 0) {
-            // Return to previous choices
-            this.flushApp();
-        } else if (sortAlgoOption == 1) {
-
-        } else if (sortAlgoOption == 2) {
-
-        } else if (sortAlgoOption == 3) {
-
-        } else if (sortAlgoOption == 4) {
-
-        } else if (sortAlgoOption == 5) {
-
-        } else if (sortAlgoOption == 6) {
-
-        } else if (sortAlgoOption == 7) {
-
-        } else {
-            this.displayInputError();
-            this.sortOperationStage();
+        switch (sortAlgoOption) {
+            case 0:
+                this.flushApp();
+                break;
+            case 1:
+                break;
+            case 2:
+                break;
+            case 3:
+                break;
+            case 4:
+                break;
+            case 5:
+                break;
+            case 6:
+                break;
+            case 7:
+                break;
+            default:
+                this.displayInputError();
+                this.sortOperationStage();
         }
+//        if (sortAlgoOption == 0) {
+//            // Return to previous choices
+//            this.flushApp();
+//        } else if (sortAlgoOption == 1) {
+//
+//        } else if (sortAlgoOption == 2) {
+//
+//        } else if (sortAlgoOption == 3) {
+//
+//        } else if (sortAlgoOption == 4) {
+//
+//        } else if (sortAlgoOption == 5) {
+//
+//        } else if (sortAlgoOption == 6) {
+//
+//        } else if (sortAlgoOption == 7) {
+//
+//        } else {
+//            this.displayInputError();
+//            this.sortOperationStage();
+//        }
     }
 
     public void displayInputError() {
