@@ -6,100 +6,49 @@ import java.util.List;
 public class ApplicationController extends StageController
 {
     private AlgorithmRepository algorithmRepository;
-    private Scanner scanner;
 
     // Constructor
     public ApplicationController() {
         this.algorithmRepository = new AlgorithmRepository();
-        this.scanner = new Scanner(System.in);
     }
 
     public void flushApp() {
-        System.out.println("Operation");
-        System.out.println("1) Searching");
-        System.out.println("2) Sorting");
-
-        System.out.print("input> ");
-        int operation = scanner.nextInt();
-        System.out.print("\n");
-
+        int operation = this.operationStageController(new Scanner(System.in));
         switch (operation) {
             case 1:
-                this.processSearch();
-                ArrayList<Double> searchDataSet = inputDataSet(new Scanner(System.in));
+                ArrayList<Double> searchDataSet = this.inputDataSet(new Scanner(System.in));
+                this.processSearch(searchDataSet, 4);
                 break;
             case 2:
                 this.processSort();
-                ArrayList<Double> sortDataSet = inputDataSet(new Scanner(System.in));
+                ArrayList<Double> sortDataSet = this.inputDataSet(new Scanner(System.in));
                 break;
             default:
                 this.displayInputError();
                 this.flushApp();
         }
-//        if (operation == 1) {
-//            this.processSearch();
-//            ArrayList<Double> dataSet = inputDataSet(new Scanner(System.in));
-//        } else if(operation == 2) {
-//            this.processSort();
-//            ArrayList<Double> dataSet = inputDataSet(new Scanner(System.in));
-//        } else {
-//            this.displayInputError();
-//            this.flushApp();
-//        }
-        this.scanner.close();
-    }
-
-    public ArrayList<Double> inputDataSet(Scanner dataSetInputs) {
-        System.out.println("Enter all numbers separated with comma or whitespace");
-        System.out.print("input> ");
-        String numbersInput = dataSetInputs.nextLine();
-
-        String[] numbersToArr = numbersInput.split("[,\\s+(, )]+"); // Splitting with multiple delimiters
-
-        ArrayList<Double> nums = new ArrayList<Double>(numbersToArr.length);
-
-        for (String s : numbersToArr) {
-            try {
-                nums.add(Double.parseDouble(s));
-            } catch (NumberFormatException e) {
-                System.out.println("Warning: Enter only integers or decimals\n");
-                System.exit(0);
-            }
-        }
-
-        dataSetInputs.close();
-        return nums;
     }
 
     // Searching operations controller
-    public void processSearch() {
-        int searchAlgoOption = this.searchOperationStage();
+    public void processSearch(List<Double> arr, double key) {
+        int searchAlgoOption = this.searchOperationStage(new Scanner(System.in));
         switch (searchAlgoOption) {
             case 0:
                 this.flushApp();
                 break;
             case 1:
+                AlgorithmRepository.sequentialSearch(arr, key);
                 break;
             case 2:
                 break;
             default:
-                this.searchOperationStage();
+                this.searchOperationStage(new Scanner(System.in));
         }
-//        if (searchAlgoOption == 0) {
-//            // Return to previous choices
-//            this.flushApp();
-//        } else if (searchAlgoOption == 1) {
-//
-//        } else if (searchAlgoOption == 2) {
-//
-//        } else {
-//            this.searchOperationStage();
-//        }
     }
     // Sorting operations controller
     public void processSort() {
 
-        int sortAlgoOption = this.sortOperationStage();
+        int sortAlgoOption = this.sortOperationStage(new Scanner(System.in));
 
         switch (sortAlgoOption) {
             case 0:
@@ -121,33 +70,7 @@ public class ApplicationController extends StageController
                 break;
             default:
                 this.displayInputError();
-                this.sortOperationStage();
+                this.sortOperationStage(new Scanner(System.in));
         }
-//        if (sortAlgoOption == 0) {
-//            // Return to previous choices
-//            this.flushApp();
-//        } else if (sortAlgoOption == 1) {
-//
-//        } else if (sortAlgoOption == 2) {
-//
-//        } else if (sortAlgoOption == 3) {
-//
-//        } else if (sortAlgoOption == 4) {
-//
-//        } else if (sortAlgoOption == 5) {
-//
-//        } else if (sortAlgoOption == 6) {
-//
-//        } else if (sortAlgoOption == 7) {
-//
-//        } else {
-//            this.displayInputError();
-//            this.sortOperationStage();
-//        }
     }
-
-    public void displayInputError() {
-        System.out.println(ANSI.RED + "⚠️: Incorrect choice, try again" + ANSI.RESET);
-    }
-
 }

@@ -1,10 +1,10 @@
 package org.dataflx;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class StageController
 {
-    public int sortOperationStage() {
-        Scanner scanner = new Scanner(System.in);
+    public int sortOperationStage(Scanner scanner) {
 
         System.out.println("Operation: " + ANSI.BOLD + "Sorting" + ANSI.RESET);
         System.out.println("1) Bubble sort");
@@ -20,13 +20,14 @@ public class StageController
         System.out.print("input> ");
         int sortAlgoOption = scanner.nextInt();
         System.out.print("\n");
+
+        scanner.close();
         return sortAlgoOption;
     }
 
-    public int searchOperationStage() {
-        Scanner scanner = new Scanner(System.in);
+    public int searchOperationStage(Scanner scanner) {
         System.out.println("Operation: " + ANSI.BOLD + "Sorting" + ANSI.RESET);
-        System.out.println("1) Linear search");
+        System.out.println("1) Sequential search");
         System.out.println("2) Binary search");
         System.out.println("0) Back");
 
@@ -35,6 +36,46 @@ public class StageController
         int searchAlgoOption = scanner.nextInt();
         System.out.print("\n");
 
+        scanner.close();
         return searchAlgoOption;
+    }
+
+    public ArrayList<Double> inputDataSet(Scanner scanner) {
+        System.out.println("Enter all numbers separated with comma or whitespace");
+        System.out.print("input> ");
+        String numbersInput = scanner.nextLine();
+
+        String[] numbersToArr = numbersInput.split("[,\\s+(, )]+"); // Splitting with multiple delimiters
+
+        ArrayList<Double> nums = new ArrayList<Double>(numbersToArr.length);
+
+        for (String s : numbersToArr) {
+            try {
+                nums.add(Double.parseDouble(s));
+            } catch (NumberFormatException e) {
+                System.out.println("Warning: Enter only integers or decimals\n");
+                System.exit(0);
+            }
+        }
+
+        scanner.close();
+        return nums;
+    }
+
+    public int operationStageController(Scanner scanner) {
+        System.out.println("Operation");
+        System.out.println("1) Searching");
+        System.out.println("2) Sorting");
+
+        System.out.print("input> ");
+        int operation = scanner.nextInt();
+        System.out.print("\n");
+
+        scanner.close();
+        return operation;
+    }
+
+    public void displayInputError() {
+        System.out.println(ANSI.RED + "⚠️: Incorrect choice, try again" + ANSI.RESET);
     }
 }
