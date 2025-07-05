@@ -37,9 +37,9 @@ public class ApplicationController
                 this.flushApp();
                 break;
             case 1: {
-//                    List<Object> userInputs = prepareSearch();
-//                    int searchedNumIndex = AlgorithmRepository.sequentialSearch((List<Double>) userInputs.getFirst(), (Double) userInputs.getLast());
-//                    System.out.println("The number can be found at index  " + searchedNumIndex);
+                    List<Object> userInputs = prepareSearch();
+                    int searchedNumIndex = AlgorithmRepository.sequentialSearch((List<Double>) userInputs.getFirst(), (Double) userInputs.getLast());
+                    System.out.println("The number can be found at index  " + searchedNumIndex);
                     break;
                 }
             case 2: {
