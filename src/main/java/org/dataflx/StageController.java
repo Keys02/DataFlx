@@ -18,7 +18,7 @@ public class StageController
     }
 
     public int searchOperation(Scanner scanner) {
-        System.out.println("Operation: " + ANSI.BOLD + "Sorting" + ANSI.RESET);
+        System.out.println("Operation: " + ANSI.BLUE + ANSI.BOLD + "Sorting" + ANSI.RESET);
         System.out.println("1) Sequential search");
         System.out.println("2) Binary search");
         System.out.println("0) Back");
@@ -34,7 +34,7 @@ public class StageController
 
     public int sortOperation(Scanner scanner) {
 
-        System.out.println("Operation: " + ANSI.BOLD + "Sorting" + ANSI.RESET);
+        System.out.println("Operation: " + ANSI.BLUE + ANSI.BOLD + "Sorting" + ANSI.RESET);
         System.out.println("1) Bubble sort");
         System.out.println("2) Heap sort");
         System.out.println("3) Insertion sort");
