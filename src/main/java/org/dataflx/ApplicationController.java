@@ -1,10 +1,10 @@
 package org.dataflx;
 import java.util.Scanner;
-import java.util.List;
 
 public class ApplicationController
 {
     private AlgorithmRepository algorithmRepository;
+
 
     public ApplicationController() {
         this.algorithmRepository = new AlgorithmRepository();
@@ -13,13 +13,18 @@ public class ApplicationController
     Scanner scanner = new Scanner(System.in);
     // Searching operations controller
     public void processSearch() {
-        System.out.println("Algorithm");
+        System.out.println("Operation: " + ANSI.BOLD + "Sorting" + ANSI.RESET);
         System.out.println("1) Linear search");
         System.out.println("2) Binary search");
+        System.out.println("0) Back");
 
+        // Enter choice
+        System.out.print("input> ");
         int searchAlgoOption = scanner.nextInt();
 
-        if (searchAlgoOption == 1) {
+        if (searchAlgoOption == 0) {
+            // Return to previous options
+        } else if (searchAlgoOption == 1) {
 
         } else if(searchAlgoOption == 2) {
 
@@ -29,7 +34,7 @@ public class ApplicationController
     }
     // Sorting operations controller
     public void processSort() {
-        System.out.println("Algorithm");
+        System.out.println("Operation: " + ANSI.BOLD + "Sorting" + ANSI.RESET);
         System.out.println("1) Bubble sort");
         System.out.println("2) Heap sort");
         System.out.println("3) Insertion sort");
@@ -37,12 +42,14 @@ public class ApplicationController
         System.out.println("5) Quick sort");
         System.out.println("6) Radix sort");
         System.out.println("7) Shell sort");
+        System.out.println("0) Back");
 
         // Enter choice
         System.out.print("input> ");
         int sortAlgoOption = scanner.nextInt();
 
-        if (sortAlgoOption == 1) {
+        if (sortAlgoOption == 0) {
+        } else if (sortAlgoOption == 1) {
 
         } else if (sortAlgoOption == 2) {
 
@@ -63,6 +70,6 @@ public class ApplicationController
     }
 
     public void displayInputError() {
-        System.out.println(ANSIColors.RED + "⚠️: Incorrect choice, try again" + ANSIColors.RESET);
+        System.out.println(ANSI.RED + "⚠️: Incorrect choice, try again" + ANSI.RESET);
     }
 }

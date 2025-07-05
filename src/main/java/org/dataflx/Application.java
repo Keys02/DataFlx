@@ -2,30 +2,13 @@ package org.dataflx;
 import java.util.Scanner;
 
 public class Application {
-    private ApplicationController appCont;
+    private MasterController masterCtrl;
 
     public Application() {
-        this.appCont = new ApplicationController();
+        this.masterCtrl= new MasterController();
     }
 
     public void run () {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Operation");
-        System.out.println("1) Searching");
-        System.out.println("2) Sorting");
-        System.out.print("input> ");
-        int operation = scanner.nextInt();
-
-        System.out.println(ANSIColors.BLUE + operation + ANSIColors.RESET);
-
-        if (operation == 1) {
-            appCont.processSearch();
-        } else if(operation == 2) {
-            appCont.processSort();
-        } else {
-            appCont.displayInputError();
-            this.run();
-        }
-
+        masterCtrl.flushApp();
     }
 }
