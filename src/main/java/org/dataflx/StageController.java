@@ -4,6 +4,34 @@ import java.util.Scanner;
 
 public class StageController
 {
+    public int operationStageController(Scanner scanner) {
+        System.out.println("Operation");
+        System.out.println("1) Searching");
+        System.out.println("2) Sorting");
+
+        System.out.print("input> ");
+        int operation = scanner.nextInt();
+        System.out.print("\n");
+
+//        scanner.close();
+        return operation;
+    }
+
+    public int searchOperationStage(Scanner scanner) {
+        System.out.println("Operation: " + ANSI.BOLD + "Sorting" + ANSI.RESET);
+        System.out.println("1) Sequential search");
+        System.out.println("2) Binary search");
+        System.out.println("0) Back");
+
+        // Enter choice
+        System.out.print("input> ");
+        int searchAlgoOption = scanner.nextInt();
+        System.out.print("\n");
+        return searchAlgoOption;
+
+//        scanner.close();
+    }
+
     public int sortOperationStage(Scanner scanner) {
 
         System.out.println("Operation: " + ANSI.BOLD + "Sorting" + ANSI.RESET);
@@ -21,23 +49,8 @@ public class StageController
         int sortAlgoOption = scanner.nextInt();
         System.out.print("\n");
 
-        scanner.close();
+//        scanner.close();
         return sortAlgoOption;
-    }
-
-    public int searchOperationStage(Scanner scanner) {
-        System.out.println("Operation: " + ANSI.BOLD + "Sorting" + ANSI.RESET);
-        System.out.println("1) Sequential search");
-        System.out.println("2) Binary search");
-        System.out.println("0) Back");
-
-        // Enter choice
-        System.out.print("input> ");
-        int searchAlgoOption = scanner.nextInt();
-        System.out.print("\n");
-
-        scanner.close();
-        return searchAlgoOption;
     }
 
     public ArrayList<Double> inputDataSet(Scanner scanner) {
@@ -58,21 +71,8 @@ public class StageController
             }
         }
 
-        scanner.close();
+//        scanner.close();
         return nums;
-    }
-
-    public int operationStageController(Scanner scanner) {
-        System.out.println("Operation");
-        System.out.println("1) Searching");
-        System.out.println("2) Sorting");
-
-        System.out.print("input> ");
-        int operation = scanner.nextInt();
-        System.out.print("\n");
-
-        scanner.close();
-        return operation;
     }
 
     public void displayInputError() {

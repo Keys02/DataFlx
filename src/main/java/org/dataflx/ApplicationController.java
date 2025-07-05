@@ -14,14 +14,13 @@ public class ApplicationController extends StageController
 
     public void flushApp() {
         int operation = this.operationStageController(new Scanner(System.in));
+
         switch (operation) {
             case 1:
-                ArrayList<Double> searchDataSet = this.inputDataSet(new Scanner(System.in));
-                this.processSearch(searchDataSet, 4);
+                this.processSearch();
                 break;
             case 2:
                 this.processSort();
-                ArrayList<Double> sortDataSet = this.inputDataSet(new Scanner(System.in));
                 break;
             default:
                 this.displayInputError();
@@ -30,14 +29,16 @@ public class ApplicationController extends StageController
     }
 
     // Searching operations controller
-    public void processSearch(List<Double> arr, double key) {
+    public void processSearch() {
         int searchAlgoOption = this.searchOperationStage(new Scanner(System.in));
+
+        ArrayList<Double> sortDataSet = this.inputDataSet(new Scanner(System.in));
+
         switch (searchAlgoOption) {
             case 0:
                 this.flushApp();
                 break;
             case 1:
-                AlgorithmRepository.sequentialSearch(arr, key);
                 break;
             case 2:
                 break;
@@ -45,10 +46,12 @@ public class ApplicationController extends StageController
                 this.searchOperationStage(new Scanner(System.in));
         }
     }
+
     // Sorting operations controller
     public void processSort() {
-
         int sortAlgoOption = this.sortOperationStage(new Scanner(System.in));
+
+        ArrayList<Double> sortDataSet = this.inputDataSet(new Scanner(System.in));
 
         switch (sortAlgoOption) {
             case 0:
