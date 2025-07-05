@@ -1,58 +1,61 @@
 package org.dataflx;
 import java.util.Scanner;
 import java.util.ArrayList;
-import java.util.List;
 
-public class ApplicationController extends StageController
+public class ApplicationController
 {
     private AlgorithmRepository algorithmRepository;
+    private StageController stageController;
 
     // Constructor
     public ApplicationController() {
         this.algorithmRepository = new AlgorithmRepository();
+        this.stageController = new StageController();
     }
 
     public void flushApp() {
-        int operation = this.operationStageController(new Scanner(System.in));
+        int operation = stageController.actionOperation(new Scanner(System.in));
 
         switch (operation) {
             case 1:
+
                 this.processSearch();
                 break;
             case 2:
                 this.processSort();
                 break;
             default:
-                this.displayInputError();
+                stageController.displayInputError();
                 this.flushApp();
         }
     }
 
     // Searching operations controller
-    public void processSearch() {
-        int searchAlgoOption = this.searchOperationStage(new Scanner(System.in));
-
-        ArrayList<Double> sortDataSet = this.inputDataSet(new Scanner(System.in));
+    private void processSearch() {
+        int searchAlgoOption = stageController.searchOperation(new Scanner(System.in));
 
         switch (searchAlgoOption) {
             case 0:
                 this.flushApp();
                 break;
             case 1:
+                ArrayList<Double> sortDataSet = stageController.inputDataSet(new Scanner(System.in));
+                double searchNum = stageController.searchNumber(new Scanner(System.in));
+//                int searchedNumIndex =  AlgorithmRepository.sequentialSearch(sortDataSet, searchNum);
+//                System.out.println("The number can be found at index  " + searchedNumIndex);
                 break;
             case 2:
                 break;
             default:
-                this.searchOperationStage(new Scanner(System.in));
+                stageController.searchOperation(new Scanner(System.in));
         }
     }
 
     // Sorting operations controller
-    public void processSort() {
-        int sortAlgoOption = this.sortOperationStage(new Scanner(System.in));
+    private void processSort() {
+        int sortAlgoOption = stageController.sortOperation(new Scanner(System.in));
 
-        ArrayList<Double> sortDataSet = this.inputDataSet(new Scanner(System.in));
-
+//        ArrayList<Double> sortDataSet = stageController.inputDataSet(new Scanner(System.in));
         switch (sortAlgoOption) {
             case 0:
                 this.flushApp();
@@ -72,8 +75,8 @@ public class ApplicationController extends StageController
             case 7:
                 break;
             default:
-                this.displayInputError();
-                this.sortOperationStage(new Scanner(System.in));
+                stageController.displayInputError();
+                stageController.sortOperation(new Scanner(System.in));
         }
     }
 }

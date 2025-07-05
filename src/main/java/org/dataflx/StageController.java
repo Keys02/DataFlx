@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class StageController
 {
-    public int operationStageController(Scanner scanner) {
+    public int actionOperation(Scanner scanner) {
         System.out.println("Operation");
         System.out.println("1) Searching");
         System.out.println("2) Sorting");
@@ -17,7 +17,7 @@ public class StageController
         return operation;
     }
 
-    public int searchOperationStage(Scanner scanner) {
+    public int searchOperation(Scanner scanner) {
         System.out.println("Operation: " + ANSI.BOLD + "Sorting" + ANSI.RESET);
         System.out.println("1) Sequential search");
         System.out.println("2) Binary search");
@@ -32,7 +32,7 @@ public class StageController
 //        scanner.close();
     }
 
-    public int sortOperationStage(Scanner scanner) {
+    public int sortOperation(Scanner scanner) {
 
         System.out.println("Operation: " + ANSI.BOLD + "Sorting" + ANSI.RESET);
         System.out.println("1) Bubble sort");
@@ -57,6 +57,7 @@ public class StageController
         System.out.println("Enter all numbers separated with comma or whitespace");
         System.out.print("input> ");
         String numbersInput = scanner.nextLine();
+        System.out.print("\n");
 
         String[] numbersToArr = numbersInput.split("[,\\s+(, )]+"); // Splitting with multiple delimiters
 
@@ -75,7 +76,17 @@ public class StageController
         return nums;
     }
 
+    public double searchNumber(Scanner scanner) {
+        System.out.println("Enter the number you want to search");
+        System.out.print("input> ");
+        double searchNum = scanner.nextDouble();
+        System.out.print("\n");
+        return searchNum;
+    }
+
     public void displayInputError() {
         System.out.println(ANSI.RED + "⚠️: Incorrect choice, try again" + ANSI.RESET);
     }
+
+
 }
