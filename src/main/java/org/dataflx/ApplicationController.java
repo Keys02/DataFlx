@@ -4,13 +4,32 @@ import java.util.Scanner;
 public class ApplicationController
 {
     private AlgorithmRepository algorithmRepository;
+    private Scanner scanner;
 
 
     public ApplicationController() {
         this.algorithmRepository = new AlgorithmRepository();
+        this.scanner = new Scanner(System.in);
     }
 
-    Scanner scanner = new Scanner(System.in);
+    public void flushApp() {
+        System.out.println("Operation");
+        System.out.println("1) Searching");
+        System.out.println("2) Sorting");
+        System.out.print("input> ");
+        int operation = scanner.nextInt();
+        System.out.print("\n");
+
+        if (operation == 1) {
+            this.processSearch();
+        } else if(operation == 2) {
+            this.processSort();
+        } else {
+            this.displayInputError();
+            this.flushApp();
+        }
+    }
+
     // Searching operations controller
     public void processSearch() {
         System.out.println("Operation: " + ANSI.BOLD + "Sorting" + ANSI.RESET);
@@ -21,9 +40,11 @@ public class ApplicationController
         // Enter choice
         System.out.print("input> ");
         int searchAlgoOption = scanner.nextInt();
+        System.out.print("\n");
 
         if (searchAlgoOption == 0) {
-            // Return to previous options
+            // Return to previous choices
+            this.flushApp();
         } else if (searchAlgoOption == 1) {
 
         } else if(searchAlgoOption == 2) {
@@ -47,8 +68,11 @@ public class ApplicationController
         // Enter choice
         System.out.print("input> ");
         int sortAlgoOption = scanner.nextInt();
+        System.out.print("\n");
 
         if (sortAlgoOption == 0) {
+            // Return to previous choices
+            this.flushApp();
         } else if (sortAlgoOption == 1) {
 
         } else if (sortAlgoOption == 2) {

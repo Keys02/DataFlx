@@ -2,13 +2,14 @@ package org.dataflx;
 import java.util.Scanner;
 
 public class Application {
-    private MasterController masterCtrl;
+    private ApplicationController appCtrl;
+    private Scanner scanner;
 
     public Application() {
-        this.masterCtrl= new MasterController();
+        this.appCtrl = new ApplicationController();
     }
 
     public void run () {
-        masterCtrl.flushApp();
+        appCtrl.flushApp();
     }
 }
