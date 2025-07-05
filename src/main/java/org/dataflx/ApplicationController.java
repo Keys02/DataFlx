@@ -37,15 +37,13 @@ public class ApplicationController
                 this.flushApp();
                 break;
             case 1: {
-                    System.out.println(ANSI.BLUE + ANSI.BOLD + "Sequential search" + ANSI.RESET);
-                    List<Object> userInputs = this.prepareSearch();
+                    List<Object> userInputs = this.prepareSearch("Sequential search");
                     int searchedNumIndex = AlgorithmRepository.sequentialSearch((List<Double>) userInputs.getFirst(), (Double) userInputs.getLast());
                     System.out.println("The number can be found at index  " + searchedNumIndex);
                     break;
                 }
             case 2: {
-                    System.out.println(ANSI.BLUE + ANSI.BOLD + "Binary search" + ANSI.RESET);
-                    List<Object> userInputs = this.prepareSearch();
+                    List<Object> userInputs = this.prepareSearch("Linear search");
                     int searchedNumIndex = AlgorithmRepository.binarySearch((List<Double>) userInputs.getFirst(), (Double) userInputs.getLast());
                     System.out.println("The number can be found at index  " + searchedNumIndex);
                     break;
@@ -55,8 +53,10 @@ public class ApplicationController
         }
     }
 
-    private List<Object> prepareSearch() {
+    private List<Object> prepareSearch(String notice) {
+        System.out.println("Algorithm:" + ANSI.BLUE + ANSI.BOLD + notice + ANSI.RESET);
         List<Double> sortDataSet = stageController.inputDataSet(new Scanner(System.in));
+        System.out.println("Algorithm:" + ANSI.BLUE + ANSI.BOLD + notice + ANSI.RESET);
         double searchNum = stageController.searchNumber(new Scanner(System.in));
         List<Object> inputs = new ArrayList<>();
         inputs.add(sortDataSet);
