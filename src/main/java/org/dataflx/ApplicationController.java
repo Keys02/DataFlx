@@ -60,16 +60,7 @@ public class ApplicationController extends StageController
 
     // Searching operations controller
     public void processSearch() {
-        System.out.println("Operation: " + ANSI.BOLD + "Sorting" + ANSI.RESET);
-        System.out.println("1) Linear search");
-        System.out.println("2) Binary search");
-        System.out.println("0) Back");
-
-        // Enter choice
-        System.out.print("input> ");
-        int searchAlgoOption = scanner.nextInt();
-        System.out.print("\n");
-
+        int searchAlgoOption = this.searchOperationStage();
         if (searchAlgoOption == 0) {
             // Return to previous choices
             this.flushApp();
@@ -78,13 +69,13 @@ public class ApplicationController extends StageController
         } else if (searchAlgoOption == 2) {
 
         } else {
-            this.processSearch();
+            this.searchOperationStage();
         }
     }
     // Sorting operations controller
     public void processSort() {
 
-        int sortAlgoOption = this.operationStage();
+        int sortAlgoOption = this.sortOperationStage();
 
         if (sortAlgoOption == 0) {
             // Return to previous choices
@@ -105,7 +96,7 @@ public class ApplicationController extends StageController
 
         } else {
             this.displayInputError();
-            this.operationStage();
+            this.sortOperationStage();
         }
     }
 
