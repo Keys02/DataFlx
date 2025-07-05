@@ -2,6 +2,12 @@ package org.dataflx;
 import java.util.Scanner;
 
 public class Application {
+    private ApplicationController appCont;
+
+    public Application() {
+        this.appCont = new ApplicationController();
+    }
+
     public void run () {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Operation");
@@ -9,12 +15,13 @@ public class Application {
         System.out.println("2) Sorting");
         int operation = scanner.nextInt();
 
-        ApplicationController appCont = new ApplicationController();
-
         if (operation == 1) {
-            appCont.performSearch();
+            appCont.processSearch();
+        } else if(operation == 2) {
+            appCont.processSort();
         } else {
-            appCont.performSort();
+            appCont.displayInputError();
+            this.run();
         }
 
     }
