@@ -38,13 +38,13 @@ public class ApplicationController
             case 1: {
                     List<Object> userInputs = stageController.prepareFinalSearchOperation("Sequential search");
                     int searchedNumIndex = AlgorithmRepository.sequentialSearch((List<Double>) userInputs.getFirst(), (Double) userInputs.getLast());
-                    System.out.println("The number can be found at index  " + ANSI.PURPLE + searchedNumIndex + ANSI.RESET);
+                    stageController.searchOperationResult(searchedNumIndex);
                     break;
                 }
             case 2: {
                     List<Object> userInputs = stageController.prepareFinalSearchOperation("Binary search");
                     int searchedNumIndex = AlgorithmRepository.binarySearch((List<Double>) userInputs.getFirst(), (Double) userInputs.getLast());
-                    System.out.println("The number can be found at index  " + ANSI.PURPLE + searchedNumIndex + ANSI.RESET);
+                    stageController.searchOperationResult(searchedNumIndex);
                     break;
                     }
             default:

@@ -92,5 +92,9 @@ public class StageController
         System.out.println(ANSI.RED + "⚠️: Incorrect choice, try again" + ANSI.RESET);
     }
 
+    public void searchOperationResult(int searchedNumIndex) {
+        System.out.println("The number can be found at index  " + ANSI.PURPLE + searchedNumIndex + ANSI.RESET);
+    }
+
 
 }
