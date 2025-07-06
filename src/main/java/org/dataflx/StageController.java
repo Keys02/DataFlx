@@ -96,5 +96,8 @@ public class StageController
         System.out.println("The number can be found at index  " + ANSI.PURPLE + searchedNumIndex + ANSI.RESET);
     }
 
+    public void sortOperationResult() {
+
+    }
 
 }
