@@ -1,5 +1,7 @@
 package org.dataflx;
 import java.util.List;
+import java.util.ArrayList;
+import java.util.Collections;
 
 public class AlgorithmRepository
 {
@@ -11,7 +13,7 @@ public class AlgorithmRepository
         arr.add(key);
         int i = 0;
 
-        while ((double) arr.get(i) != key) { i++; }
+        while (arr.get(i) != key) { i++; }
 
         arr.removeLast();
 
@@ -19,16 +21,24 @@ public class AlgorithmRepository
     }
 
     public static int binarySearch(List<Double> arr, double key) {
-        int left = 0;
-        int right = arr.size() - 1;
-        while (left <= right) {
-            int mid = left + (right - left) / 2;
-            if (arr.get(mid) == key) {
-                return mid;
-            } else if (arr.get(mid) < key) {
-                left = mid + 1;
+        //Clone the original array
+        List<Double> clonedArray = new ArrayList<Double>(arr);
+
+        // First sort the array
+        Collections.sort(arr);
+        int low = 0;
+        int high = arr.size() - 1;
+
+        while (low <= high) {
+            int mid = (int) Math.floor((double)(low + high) / 2);
+            double guess = arr.get(mid);
+
+            if (guess == key) {
+                return AlgorithmRepository.sequentialSearch(clonedArray, arr.get(mid));
+            } else if (guess < key) {
+                low = mid + 1;
             } else {
-                right = mid - 1;
+                high = mid - 1;
             }
         }
         return -1;
