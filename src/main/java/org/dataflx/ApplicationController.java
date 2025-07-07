@@ -91,7 +91,9 @@ public class ApplicationController
                 break;
                     }
             case 5: {
-
+                        List<Double> userDataSet = stageController.inputDataSet(new Scanner(System.in), "Heap sort");
+                        String sortedArray = AlgorithmRepository.heapSort(userDataSet);
+                        stageController.sortOperationResult(sortedArray, "Heap sort");
                 break;
                     }
             case 6: {

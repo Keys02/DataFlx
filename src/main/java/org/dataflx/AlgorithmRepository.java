@@ -175,5 +175,39 @@ public class AlgorithmRepository
     }
 
 
+    /*******************************************
+                    Heap sort
+     ******************************************/
+    public static String heapSort(List<Double> arr) {
+        int n = arr.size();
+        for (int i = n / 2 - 1; i >= 0; i--) {
+            heapify(arr, n, i);
+        }
+        for (int i = n - 1; i >= 0; i--) {
+            double temp = arr.getFirst();
+            arr.set(0, arr.get(i));
+            arr.set(i, temp);
+            heapify(arr, i, 0);
+        }
+        return arr.toString();
+    }
+    static void heapify(List<Double> arr, int n, int i) {
+        int largest = i;
+        int left = 2 * i + 1;
+        int right = 2 * i + 2;
+        if (left < n && arr.get(left) > arr.get(largest)) {
+            largest = left;
+        }
+        if (right < n && arr.get(right) > arr.get(largest))
+            largest = right;
+        if (largest != i) {
+            double swap = arr.get(i);
+            arr.set(i, arr.get(largest));
+            arr.set(largest, swap);
+
+            heapify(arr, n, largest);
+        }
+    }
+
 
 }
