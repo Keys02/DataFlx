@@ -85,7 +85,9 @@ public class ApplicationController
                     }
                 break;
             case 4: {
-
+                        List<Double> userDataSet = stageController.inputDataSet(new Scanner(System.in), "Merge sort");
+                        String sortedArray = AlgorithmRepository.mergeSort(userDataSet,0, userDataSet.size() - 1);
+                        stageController.sortOperationResult(sortedArray, "Merge sort");
                 break;
                     }
             case 5: {

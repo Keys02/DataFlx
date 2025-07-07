@@ -126,5 +126,54 @@ public class AlgorithmRepository
         return arr.toString();
     }
 
+    /*******************************************
+                    Merge sort
+     ******************************************/
+    private static void merge(List<Double> arr, int low, int mid, int high) {
+        ArrayList<Double> temp = new ArrayList<>(); // temporary array
+        int left = low;      // starting index of left half of arr
+        int right = mid + 1;   // starting index of right half of arr
+
+        //storing elements in the temporary array in a sorted manner//
+
+        while (left <= mid && right <= high) {
+            if (arr.get(left) <= arr.get(right)) {
+                temp.add(arr.get(left));
+                left++;
+            } else {
+                temp.add(arr.get(right));
+                right++;
+            }
+        }
+
+        // if elements on the left half are still left //
+
+        while (left <= mid) {
+            temp.add(arr.get(left));
+            left++;
+        }
+
+        //  if elements on the right half are still left //
+        while (right <= high) {
+            temp.add(arr.get(right));
+            right++;
+        }
+
+        // Transferring all elements from temporary to arr //
+        for (int i = low; i <= high; i++) {
+            arr.set(i, temp.get(i - low));
+        }
+    }
+
+    public static String mergeSort(List<Double> arr, int low, int high) {
+        if (low >= high) { return null; }
+        int mid = (low + high) / 2 ;
+        mergeSort(arr, low, mid);  // left half
+        mergeSort(arr, mid + 1, high); // right half
+        merge(arr, low, mid, high);  // merging sorted halves
+        return arr.toString();
+    }
+
+
 
 }
