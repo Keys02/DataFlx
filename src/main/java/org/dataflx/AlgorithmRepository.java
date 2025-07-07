@@ -111,4 +111,20 @@ public class AlgorithmRepository
         return i + 1;
     }
 
+    /*******************************************
+                    Insertion sort
+     ******************************************/
+    public static String insertionSort(List<Double> arr) {
+        for(int i = 1; i < arr.size(); ++i) {
+            double prevElem = arr.get(i);
+            int j;
+            for(j = i - 1; j >= 0 && arr.get(j) > prevElem; --j) {
+                arr.set(j + 1, arr.get(j));
+            }
+            arr.set(j + 1, prevElem);
+        }
+        return arr.toString();
+    }
+
+
 }

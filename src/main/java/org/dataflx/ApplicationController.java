@@ -78,16 +78,28 @@ public class ApplicationController
                         stageController.sortOperationResult(sortedArray, "Quick sort");
                 break;
                     }
-            case 3:
+            case 3: {
+                        List<Double> userDataSet = stageController.inputDataSet(new Scanner(System.in), "Insertion sort");
+                        String sortedArray = AlgorithmRepository.insertionSort(userDataSet);
+                        stageController.sortOperationResult(sortedArray, "Insertion sort");
+                    }
                 break;
-            case 4:
+            case 4: {
+
                 break;
-            case 5:
+                    }
+            case 5: {
+
                 break;
-            case 6:
+                    }
+            case 6: {
+
                 break;
-            case 7:
+                    }
+            case 7: {
+
                 break;
+                    }
             default:
                 stageController.displayInputError();
                 stageController.sortOperation(new Scanner(System.in));
