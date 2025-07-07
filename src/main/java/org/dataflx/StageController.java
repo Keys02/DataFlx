@@ -1,4 +1,5 @@
 package org.dataflx;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -51,6 +52,8 @@ public class StageController
         System.out.println("Algorithm: " + ANSI.BOLD + ANSI.BLUE + notice + ANSI.RESET);
         System.out.println(ANSI.ORANGE + "Enter all numbers separated with comma or whitespace" + ANSI.RESET);
         System.out.print("input> ");
+
+        // Enter dataset
         String numbersInput = scanner.nextLine();
         System.out.print("\n");
 
@@ -83,6 +86,8 @@ public class StageController
         System.out.println("Algorithm: " + ANSI.BOLD + ANSI.BLUE + notice + ANSI.RESET);
         System.out.println(ANSI.ORANGE + "Enter the number you want to search" + ANSI.RESET);
         System.out.print("input> ");
+
+        // Enter number to be searched
         double searchNum = scanner.nextDouble();
         System.out.print("\n");
         return searchNum;
@@ -96,8 +101,9 @@ public class StageController
         System.out.println("The number can be found at index  " + ANSI.PURPLE + searchedNumIndex + ANSI.RESET);
     }
 
-    public void sortOperationResult() {
-
+    public void sortOperationResult(String arr, String notice) {
+        System.out.println("Algorithm: " + ANSI.BLUE  + ANSI.BOLD + notice + ANSI.RESET);
+        System.out.println("Sorted Array: " + ANSI.PURPLE + arr + ANSI.RESET);
     }
 
 }

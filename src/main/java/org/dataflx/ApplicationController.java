@@ -1,6 +1,8 @@
 package org.dataflx;
+
 import java.util.List;
 import java.util.Scanner;
+import java.util.ArrayList;
 
 public class ApplicationController
 {
@@ -36,17 +38,19 @@ public class ApplicationController
                 this.flushApp();
                 break;
             case 1: {
-                    List<Object> userInputs = stageController.prepareFinalSearchOperation("Sequential search");
-                    int searchedNumIndex = AlgorithmRepository.sequentialSearch((List<Double>) userInputs.getFirst(), (Double) userInputs.getLast());
-                    stageController.searchOperationResult(searchedNumIndex);
-                    break;
-                }
-            case 2: {
-                    List<Object> userInputs = stageController.prepareFinalSearchOperation("Binary search");
-                    int searchedNumIndex = AlgorithmRepository.binarySearch((List<Double>) userInputs.getFirst(), (Double) userInputs.getLast());
-                    stageController.searchOperationResult(searchedNumIndex);
-                    break;
+                        List<Object> userDataSet = stageController.prepareFinalSearchOperation("Sequential search");
+                        int searchedNumIndex = AlgorithmRepository.sequentialSearch((List<Double>) userDataSet.getFirst(), (Double) userDataSet.getLast());
+                        stageController.searchOperationResult(searchedNumIndex);
+                        break;
                     }
+
+            case 2: {
+                        List<Object> userDataSet = stageController.prepareFinalSearchOperation("Binary search");
+                        int searchedNumIndex = AlgorithmRepository.binarySearch((List<Double>) userDataSet.getFirst(), (Double) userDataSet.getLast());
+                        stageController.searchOperationResult(searchedNumIndex);
+                        break;
+                    }
+
             default:
                 stageController.displayInputError();
                 this.processSearch();
@@ -64,6 +68,9 @@ public class ApplicationController
                 this.flushApp();
                 break;
             case 1:
+                List<Double> userDataSet = stageController.inputDataSet(new Scanner(System.in), "Bubble sort");
+                String sortedArray = AlgorithmRepository.bubbleSort(userDataSet);
+                stageController.sortOperationResult(sortedArray, "Bubble sort");
                 break;
             case 2:
                 break;
