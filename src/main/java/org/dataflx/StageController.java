@@ -33,10 +33,10 @@ public class StageController
     public int sortOperation(Scanner scanner) {
         System.out.println("Operation: " + ANSI.BLUE + ANSI.BOLD + "Sorting" + ANSI.RESET);
         System.out.println("1) Bubble sort");
-        System.out.println("2) Heap sort");
+        System.out.println("2) Quick sort");
         System.out.println("3) Insertion sort");
         System.out.println("4) Merge sort");
-        System.out.println("5) Quick sort");
+        System.out.println("5) Heap sort");
         System.out.println("6) Radix sort");
         System.out.println("7) Shell sort");
         System.out.println("0) Back");

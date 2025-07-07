@@ -62,18 +62,22 @@ public class ApplicationController
     private void processSort() {
         int sortAlgoOption = stageController.sortOperation(new Scanner(System.in));
 
-//        ArrayList<Double> sortDataSet = stageController.inputDataSet(new Scanner(System.in));
         switch (sortAlgoOption) {
             case 0:
                 this.flushApp();
                 break;
-            case 1:
-                List<Double> userDataSet = stageController.inputDataSet(new Scanner(System.in), "Bubble sort");
-                String sortedArray = AlgorithmRepository.bubbleSort(userDataSet);
-                stageController.sortOperationResult(sortedArray, "Bubble sort");
+            case 1: {
+                        List<Double> userDataSet = stageController.inputDataSet(new Scanner(System.in), "Bubble sort");
+                        String sortedArray = AlgorithmRepository.bubbleSort(userDataSet);
+                        stageController.sortOperationResult(sortedArray, "Bubble sort");
+                        break;
+                    }
+            case 2: {
+                        List<Double> userDataSet = stageController.inputDataSet(new Scanner(System.in), "Quick sort");
+                        String sortedArray = AlgorithmRepository.quickSort(userDataSet,0, userDataSet.size() - 1);
+                        stageController.sortOperationResult(sortedArray, "Quick sort");
                 break;
-            case 2:
-                break;
+                    }
             case 3:
                 break;
             case 4:

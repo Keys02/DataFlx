@@ -6,10 +6,12 @@ import java.util.Collections;
 
 public class AlgorithmRepository
 {
-    /*=================================
-            Searching Algorithms
-    ===================================*/
-    // Sequential (Linear) search
+    //------------------------------------------------------------------------------
+    //                              Searching Algorithms
+    //------------------------------------------------------------------------------
+    /*******************************************
+            Sequential (Linear) search
+     ******************************************/
     public static int sequentialSearch(List<Double> arr, double key) {
         int arrayLength = arr.size();
         arr.add(key);
@@ -22,7 +24,9 @@ public class AlgorithmRepository
         return (i == arrayLength) ? -1 : i;
     }
 
-    // Binary search
+    /*******************************************
+            Binary (Linear) search
+     ******************************************/
     public static int binarySearch(List<Double> arr, double key) {
         //Clone the original array
         List<Double> clonedArray = new ArrayList<>(arr);
@@ -48,10 +52,13 @@ public class AlgorithmRepository
         return -1;
     }
 
-    /*=================================
-            Sorting Algorithms
-    ===================================*/
-    // Bubble Sort Algorithm
+
+    //------------------------------------------------------------------------------
+    //                              Sorting Algorithms
+    //------------------------------------------------------------------------------
+    /*******************************************
+                    Bubble sort
+     ******************************************/
     public static String bubbleSort(List<Double> arr) {
         int n = arr.size();
         boolean swapped;
@@ -71,6 +78,37 @@ public class AlgorithmRepository
         }
 
         return arr.toString();
+    }
+
+    /*******************************************
+                    Quick sort
+     ******************************************/
+    public static String quickSort(List<Double> arr, int low, int high) {
+        //Set the initial high and low values
+        if (low < high) {
+            int pi = partition(arr, low, high);
+            quickSort(arr, low, pi - 1);
+            quickSort(arr, pi + 1, high);
+        }
+
+        return arr.toString();
+    }
+
+    private static int partition(List<Double> arr, int low, int high) {
+        double pivot = arr.get(high);
+        int i = (low - 1);
+        for (int j = low; j < high; j++) {
+            if (arr.get(j) < pivot) {
+                i++;
+                double temp = arr.get(i);
+                arr.set(i, arr.get(j));
+                arr.set(j, temp);
+            }
+        }
+        double temp = arr.get(i + 1);
+        arr.set(i + 1, arr.get(high));
+        arr.set(high, temp);
+        return i + 1;
     }
 
 }
