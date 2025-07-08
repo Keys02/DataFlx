@@ -74,38 +74,61 @@ public class StageController
         return nums;
     }
 
-    public List<Object> prepareFinalSearchOperation(String notice) {
-        List<Object> inputs = new ArrayList<>();
+    public List<Double> dataSetEntry(String notice) {
+//        try {
+            return this.inputDataSet(new Scanner(System.in), notice);
+//        } catch(NumberFormatException e) {
+//            this.incorrectDataSetInputError();
+//            this.dataSetEntry(notice);
+////            List<Double> sortDataSet = this.inputDataSet(new Scanner(System.in), notice);
+////            inputs.add(sortDataSet);
+//        }
+//        return null;
+    }
 
-        try {
-            List<Double> sortDataSet = this.inputDataSet(new Scanner(System.in), notice);
-            inputs.add(sortDataSet);
-        } catch(NumberFormatException e) {
-            this.incorrectDataSetInputError();
+    public double searchNumEntry(String notice) {
+//        try {
+            return this.searchNumber(new Scanner(System.in), notice);
+//        } catch(InputMismatchException e) {
+//            this.searchNumInputError();
+//            this.searchNumInputError();
+//        }
+//        return 0;
+    }
+
+//    public List<Object> prepareFinalSearchOperation(String notice) {
+//        List<Object> inputs = new ArrayList<>();
+//
+//        try {
 //            List<Double> sortDataSet = this.inputDataSet(new Scanner(System.in), notice);
 //            inputs.add(sortDataSet);
-            this.prepareFinalSearchOperation(notice);
-        }
-
-        try {
-            double searchNum = this.searchNumber(new Scanner(System.in), notice);
-            inputs.add(searchNum);
-        } catch(InputMismatchException e) {
-            this.searchNumInputError();
-            double searchNum = this.searchNumber(new Scanner(System.in), notice);
-            inputs.add(searchNum);
-        }
-
-        return inputs;
-
-//        List<Double> sortDataSet = this.inputDataSet(new Scanner(System.in), notice);
-//        double searchNum = this.searchNumber(new Scanner(System.in), notice);
+//        } catch(NumberFormatException e) {
+//            this.incorrectDataSetInputError();
+////            List<Double> sortDataSet = this.inputDataSet(new Scanner(System.in), notice);
+////            inputs.add(sortDataSet);
+//            this.prepareFinalSearchOperation(notice);
+//        }
 //
-//        List<Object> inputs = new ArrayList<>();
-//        inputs.add(sortDataSet);
-//        inputs.add(searchNum);
+//        try {
+//            double searchNum = this.searchNumber(new Scanner(System.in), notice);
+//            inputs.add(searchNum);
+//        } catch(InputMismatchException e) {
+//            this.searchNumInputError();
+//            double searchNum = this.searchNumber(new Scanner(System.in), notice);
+//            inputs.add(searchNum);
+//        }
+//
 //        return inputs;
-    }
+//
+////        List<Double> sortDataSet = this.inputDataSet(new Scanner(System.in), notice);
+////        double searchNum = this.searchNumber(new Scanner(System.in), notice);
+////
+////        List<Object> inputs = new ArrayList<>();
+////        inputs.add(sortDataSet);
+////        inputs.add(searchNum);
+////        return inputs;
+//    }
+
 
     public double searchNumber(Scanner scanner, String notice) {
         System.out.println("Algorithm: " + ANSI.BOLD + ANSI.BLUE + notice + ANSI.RESET);

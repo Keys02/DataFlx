@@ -3,6 +3,7 @@ package org.dataflx;
 import java.util.List;
 import java.util.Scanner;
 import java.util.InputMismatchException;
+import java.util.ArrayList;
 
 public class ApplicationController
 {
@@ -68,15 +69,36 @@ public class ApplicationController
 //                        int searchedNumIndex = AlgorithmRepository.sequentialSearch((List<Double>) userDataSet.getFirst(), (Double) userDataSet.getLast());
 //                        stageController.searchOperationResult(searchedNumIndex, "Sequential search", "O(n)");
 //                    }
-                    List<Object> userDataSet = stageController.prepareFinalSearchOperation("Sequential search");
-                    int searchedNumIndex = AlgorithmRepository.sequentialSearch((List<Double>) userDataSet.getFirst(), (Double) userDataSet.getLast());
-                    stageController.searchOperationResult(searchedNumIndex, "Sequential search", "O(n)");
-                    break;
+                        try {
+                            List<Double> userDataSet = stageController.dataSetEntry("Sequential search");
+                            double searchedNum = stageController.searchNumEntry("Sequential search");
+                            int searchedNumIndex = AlgorithmRepository.sequentialSearch(userDataSet, searchedNum);
+                            stageController.searchOperationResult(searchedNumIndex, "Sequential search", "O(n)");
+                        } catch(Exception e) {
+                            List<Double> cachedDataSet = new ArrayList<Double>();
+
+                            if (e instanceof NumberFormatException) {
+                                List<Double> userDataSet = stageController.dataSetEntry("Sequential search");
+                                cachedDataSet.addAll(userDataSet);
+                                double searchedNum = stageController.searchNumEntry("Sequential search");
+                                int searchedNumIndex = AlgorithmRepository.sequentialSearch(userDataSet, searchedNum);
+                            } else if (e instanceof InputMismatchException) {
+                                double searchedNum = stageController.searchNumEntry("Sequential search");
+                                int searchedNumIndex = AlgorithmRepository.sequentialSearch(cachedDataSet, searchedNum);
+                                stageController.searchOperationResult(searchedNumIndex, "Sequential search", "O(n)");
+                            }
+                        }
+//                        List<Double> userDataSet = stageController.dataSetEntry("Sequential search");
+//                        double searchedNum = stageController.searchNumEntry("Sequential search");
+//                        int searchedNumIndex = AlgorithmRepository.sequentialSearch(userDataSet, searchedNum);
+//                        stageController.searchOperationResult(searchedNumIndex, "Sequential search", "O(n)");
+                        break;
                 }
 
                 case 2: {
-                    List<Object> userDataSet = stageController.prepareFinalSearchOperation("Binary search");
-                    int searchedNumIndex = AlgorithmRepository.binarySearch((List<Double>) userDataSet.getFirst(), (Double) userDataSet.getLast());
+                    List<Double> userDataSet = stageController.dataSetEntry("Sequential search");
+                    double searchedNum = stageController.searchNumEntry("Sequential search");
+                    int searchedNumIndex = AlgorithmRepository.binarySearch(userDataSet, searchedNum);
                     stageController.searchOperationResult(searchedNumIndex, "Binary search", "O(log n)");
                     break;
                 }
