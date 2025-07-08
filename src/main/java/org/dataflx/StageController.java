@@ -19,7 +19,7 @@ public class StageController
     }
 
     public int searchOperation(Scanner scanner) {
-        System.out.println("Operation: " + ANSI.BLUE + ANSI.BOLD + "Sorting" + ANSI.RESET);
+        System.out.println("Operation: " + ANSI.BLUE + ANSI.BOLD + "Searching" + ANSI.RESET);
         System.out.println("1) Sequential search");
         System.out.println("2) Binary search");
         System.out.println("0) Back");
@@ -64,70 +64,10 @@ public class StageController
         ArrayList<Double> nums = new ArrayList<Double>(numbersToArr.length);
 
         for (String s : numbersToArr) {
-//            try {
                 nums.add(Double.parseDouble(s));
-//            } catch (NumberFormatException e) {
-//                System.out.println("Warning: Enter only integers or decimals\n");
-//                System.exit(0);
-//            }
         }
         return nums;
     }
-
-    public List<Double> dataSetEntry(String notice) {
-//        try {
-            return this.inputDataSet(new Scanner(System.in), notice);
-//        } catch(NumberFormatException e) {
-//            this.incorrectDataSetInputError();
-//            this.dataSetEntry(notice);
-////            List<Double> sortDataSet = this.inputDataSet(new Scanner(System.in), notice);
-////            inputs.add(sortDataSet);
-//        }
-//        return null;
-    }
-
-    public double searchNumEntry(String notice) {
-//        try {
-            return this.searchNumber(new Scanner(System.in), notice);
-//        } catch(InputMismatchException e) {
-//            this.searchNumInputError();
-//            this.searchNumInputError();
-//        }
-//        return 0;
-    }
-
-//    public List<Object> prepareFinalSearchOperation(String notice) {
-//        List<Object> inputs = new ArrayList<>();
-//
-//        try {
-//            List<Double> sortDataSet = this.inputDataSet(new Scanner(System.in), notice);
-//            inputs.add(sortDataSet);
-//        } catch(NumberFormatException e) {
-//            this.incorrectDataSetInputError();
-////            List<Double> sortDataSet = this.inputDataSet(new Scanner(System.in), notice);
-////            inputs.add(sortDataSet);
-//            this.prepareFinalSearchOperation(notice);
-//        }
-//
-//        try {
-//            double searchNum = this.searchNumber(new Scanner(System.in), notice);
-//            inputs.add(searchNum);
-//        } catch(InputMismatchException e) {
-//            this.searchNumInputError();
-//            double searchNum = this.searchNumber(new Scanner(System.in), notice);
-//            inputs.add(searchNum);
-//        }
-//
-//        return inputs;
-//
-////        List<Double> sortDataSet = this.inputDataSet(new Scanner(System.in), notice);
-////        double searchNum = this.searchNumber(new Scanner(System.in), notice);
-////
-////        List<Object> inputs = new ArrayList<>();
-////        inputs.add(sortDataSet);
-////        inputs.add(searchNum);
-////        return inputs;
-//    }
 
 
     public double searchNumber(Scanner scanner, String notice) {
