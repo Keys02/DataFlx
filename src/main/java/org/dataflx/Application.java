@@ -1,14 +1,13 @@
 package org.dataflx;
-import java.util.Scanner;
 
 public class Application {
-    private ApplicationController appCtrl;
+    private ApplicationController appController;
 
     public Application() {
-        this.appCtrl = new ApplicationController();
+        this.appController = new ApplicationController();
     }
 
     public void run () {
-        appCtrl.flushApp();
+        appController.flushApp();
     }
 }

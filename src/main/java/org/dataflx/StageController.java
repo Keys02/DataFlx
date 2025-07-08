@@ -1,5 +1,6 @@
 package org.dataflx;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class StageController
@@ -12,8 +13,6 @@ public class StageController
         System.out.print("input> ");
         int operation = scanner.nextInt();
         System.out.print("\n");
-
-//        scanner.close();
         return operation;
     }
 
@@ -28,12 +27,9 @@ public class StageController
         int searchAlgoOption = scanner.nextInt();
         System.out.print("\n");
         return searchAlgoOption;
-
-//        scanner.close();
     }
 
     public int sortOperation(Scanner scanner) {
-
         System.out.println("Operation: " + ANSI.BLUE + ANSI.BOLD + "Sorting" + ANSI.RESET);
         System.out.println("1) Bubble sort");
         System.out.println("2) Heap sort");
@@ -48,12 +44,11 @@ public class StageController
         System.out.print("input> ");
         int sortAlgoOption = scanner.nextInt();
         System.out.print("\n");
-
-//        scanner.close();
         return sortAlgoOption;
     }
 
-    public ArrayList<Double> inputDataSet(Scanner scanner) {
+    public ArrayList<Double> inputDataSet(Scanner scanner, String notice) {
+        System.out.println("Algorithm: " + ANSI.BOLD + ANSI.BLUE + notice + ANSI.RESET);
         System.out.println(ANSI.ORANGE + "Enter all numbers separated with comma or whitespace" + ANSI.RESET);
         System.out.print("input> ");
         String numbersInput = scanner.nextLine();
@@ -71,12 +66,21 @@ public class StageController
                 System.exit(0);
             }
         }
-
-//        scanner.close();
         return nums;
     }
 
-    public double searchNumber(Scanner scanner) {
+    public List<Object> prepareFinalSearchOperation(String notice) {
+        List<Double> sortDataSet = this.inputDataSet(new Scanner(System.in), notice);
+        double searchNum = this.searchNumber(new Scanner(System.in), notice);
+
+        List<Object> inputs = new ArrayList<>();
+        inputs.add(sortDataSet);
+        inputs.add(searchNum);
+        return inputs;
+    }
+
+    public double searchNumber(Scanner scanner, String notice) {
+        System.out.println("Algorithm: " + ANSI.BOLD + ANSI.BLUE + notice + ANSI.RESET);
         System.out.println(ANSI.ORANGE + "Enter the number you want to search" + ANSI.RESET);
         System.out.print("input> ");
         double searchNum = scanner.nextDouble();
@@ -88,5 +92,12 @@ public class StageController
         System.out.println(ANSI.RED + "⚠️: Incorrect choice, try again" + ANSI.RESET);
     }
 
+    public void searchOperationResult(int searchedNumIndex) {
+        System.out.println("The number can be found at index  " + ANSI.PURPLE + searchedNumIndex + ANSI.RESET);
+    }
+
+    public void sortOperationResult() {
+
+    }
 
 }
