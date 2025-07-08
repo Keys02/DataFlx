@@ -98,13 +98,15 @@ public class StageController
         System.out.println(ANSI.RED + "⚠️: Incorrect choice, try again" + ANSI.RESET);
     }
 
-    public void searchOperationResult(int searchedNumIndex) {
-        System.out.println("The number can be found at index  " + ANSI.PURPLE + searchedNumIndex + ANSI.RESET);
+    public void searchOperationResult(int searchedNumIndex, String runtime) {
+        System.out.println("The number can be found at index " + ANSI.BOLD + ANSI.PURPLE + searchedNumIndex + ANSI.RESET);
+        System.out.println("Runtime in Big O Notation: " + ANSI.BOLD + ANSI.YELLOW + runtime + ANSI.RESET + " in the worse case scenario.");
     }
 
-    public void sortOperationResult(String arr, String notice) {
+    public void sortOperationResult(String arr, String notice, String runtime) {
         System.out.println("Algorithm: " + ANSI.BLUE  + ANSI.BOLD + notice + ANSI.RESET);
         System.out.println("Sorted Array: " + ANSI.PURPLE + arr + ANSI.RESET);
+        System.out.println("Runtime in Big O Notation: " + ANSI.BOLD + ANSI.YELLOW + runtime + ANSI.RESET + " in the worse case scenario.");
     }
 
 }

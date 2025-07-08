@@ -39,14 +39,14 @@ public class ApplicationController
             case 1: {
                         List<Object> userDataSet = stageController.prepareFinalSearchOperation("Sequential search");
                         int searchedNumIndex = AlgorithmRepository.sequentialSearch((List<Double>) userDataSet.getFirst(), (Double) userDataSet.getLast());
-                        stageController.searchOperationResult(searchedNumIndex);
+                        stageController.searchOperationResult(searchedNumIndex, "O(n)");
                         break;
                     }
 
             case 2: {
                         List<Object> userDataSet = stageController.prepareFinalSearchOperation("Binary search");
                         int searchedNumIndex = AlgorithmRepository.binarySearch((List<Double>) userDataSet.getFirst(), (Double) userDataSet.getLast());
-                        stageController.searchOperationResult(searchedNumIndex);
+                        stageController.searchOperationResult(searchedNumIndex, "O(log n)");
                         break;
                     }
 
@@ -68,49 +68,49 @@ public class ApplicationController
             case 1: {
                         List<Double> userDataSet = stageController.inputDataSet(new Scanner(System.in), "Bubble sort");
                         String sortedArray = AlgorithmRepository.bubbleSort(userDataSet);
-                        stageController.sortOperationResult(sortedArray, "Bubble sort");
+                        stageController.sortOperationResult(sortedArray, "Bubble sort", "O(n²)");
                         break;
                     }
             case 2: {
                         List<Double> userDataSet = stageController.inputDataSet(new Scanner(System.in), "Quick sort");
                         String sortedArray = AlgorithmRepository.quickSort(userDataSet,0, userDataSet.size() - 1);
-                        stageController.sortOperationResult(sortedArray, "Quick sort");
+                        stageController.sortOperationResult(sortedArray, "Quick sort", "0(n²)");
                 break;
                     }
             case 3: {
                         List<Double> userDataSet = stageController.inputDataSet(new Scanner(System.in), "Insertion sort");
                         String sortedArray = AlgorithmRepository.insertionSort(userDataSet);
-                        stageController.sortOperationResult(sortedArray, "Insertion sort");
+                        stageController.sortOperationResult(sortedArray, "Insertion sort", "0(n²)");
                     }
                 break;
             case 4: {
                         List<Double> userDataSet = stageController.inputDataSet(new Scanner(System.in), "Merge sort");
                         String sortedArray = AlgorithmRepository.mergeSort(userDataSet,0, userDataSet.size() - 1);
-                        stageController.sortOperationResult(sortedArray, "Merge sort");
+                        stageController.sortOperationResult(sortedArray, "Merge sort", "O(n log n)");
                 break;
                     }
             case 5: {
                         List<Double> userDataSet = stageController.inputDataSet(new Scanner(System.in), "Heap sort");
                         String sortedArray = AlgorithmRepository.heapSort(userDataSet);
-                        stageController.sortOperationResult(sortedArray, "Heap sort");
+                        stageController.sortOperationResult(sortedArray, "Heap sort", "O(n log n)");
                 break;
                     }
             case 6: {
                         List<Double> userDataSet = stageController.inputDataSet(new Scanner(System.in), "Radix sort");
                         String sortedArray = AlgorithmRepository.radixSort(userDataSet);
-                        stageController.sortOperationResult(sortedArray, "Radix sort");
+                        stageController.sortOperationResult(sortedArray, "Radix sort", "O(nk)");
                 break;
                     }
             case 7: {
                         List<Double> userDataSet = stageController.inputDataSet(new Scanner(System.in), "Shell sort");
                         String sortedArray = AlgorithmRepository.shellSort(userDataSet);
-                        stageController.sortOperationResult(sortedArray, "Shell sort");
+                        stageController.sortOperationResult(sortedArray, "Shell sort", "0(n²)");
                 break;
                     }
             case 8: {
                         List<Double> userDataSet = stageController.inputDataSet(new Scanner(System.in), "Bucket sort");
                         String sortedArray = AlgorithmRepository.bucketSort(userDataSet);
-                        stageController.sortOperationResult(sortedArray, "Bucket sort");
+                        stageController.sortOperationResult(sortedArray, "Bucket sort", "O(n²)");
                 break;
             }
             default:
