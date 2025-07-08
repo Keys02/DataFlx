@@ -2,7 +2,6 @@ package org.dataflx;
 
 import java.util.List;
 import java.util.Scanner;
-import java.util.ArrayList;
 
 public class ApplicationController
 {
@@ -97,11 +96,15 @@ public class ApplicationController
                 break;
                     }
             case 6: {
-
+                        List<Double> userDataSet = stageController.inputDataSet(new Scanner(System.in), "Radix sort");
+                        String sortedArray = AlgorithmRepository.radixSort(userDataSet);
+                        stageController.sortOperationResult(sortedArray, "Radix sort");
                 break;
                     }
             case 7: {
-
+                        List<Double> userDataSet = stageController.inputDataSet(new Scanner(System.in), "Radix sort");
+                        String sortedArray = AlgorithmRepository.shellSort(userDataSet);
+                        stageController.sortOperationResult(sortedArray, "Radix sort");
                 break;
                     }
             default:

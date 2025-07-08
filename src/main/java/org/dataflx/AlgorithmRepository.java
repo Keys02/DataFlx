@@ -1,8 +1,6 @@
 package org.dataflx;
 
-import java.util.List;
-import java.util.ArrayList;
-import java.util.Collections;
+import java.util.*;
 
 public class AlgorithmRepository
 {
@@ -191,7 +189,8 @@ public class AlgorithmRepository
         }
         return arr.toString();
     }
-    static void heapify(List<Double> arr, int n, int i) {
+
+    private static void heapify(List<Double> arr, int n, int i) {
         int largest = i;
         int left = 2 * i + 1;
         int right = 2 * i + 2;
@@ -209,5 +208,69 @@ public class AlgorithmRepository
         }
     }
 
+    /*******************************************
+                    Radix sort
+     ******************************************/
+    private static final int SCALING_FACTOR = 1000; // for 3 decimal places
+
+    // Get the maximum number
+    public static int getMax(List<Integer> arr) {
+        int max = arr.getFirst();
+        for (int num : arr) {
+            if (num > max)
+                max = num;
+        }
+        return max;
+    }
+
+    // Counting sort for digit place
+    public static void countingSort(List<Integer> arr, int exp) {
+        int n = arr.size();
+        ArrayList<Integer> output = new ArrayList<>(Collections.nCopies(n, 0));
+        int[] count = new int[10];
+
+        for (int i = 0; i < n; i++) {
+            int digit = (arr.get(i) / exp) % 10;
+            count[digit]++;
+        }
+
+        for (int i = 1; i < 10; i++)
+            count[i] += count[i - 1];
+
+        for (int i = n - 1; i >= 0; i--) {
+            int digit = (arr.get(i) / exp) % 10;
+            output.set(count[digit] - 1, arr.get(i));
+            count[digit]--;
+        }
+
+        for (int i = 0; i < n; i++)
+            arr.set(i, output.get(i));
+    }
+
+    // Radix sort for integers
+    public static void radixSortInt(List<Integer> arr) {
+        int max = getMax(arr);
+        for (int exp = 1; max / exp > 0; exp *= 10)
+            countingSort(arr, exp);
+    }
+
+    // Main radix sort for doubles
+    public static String radixSort(List<Double> doubleList) {
+        int n = doubleList.size();
+        ArrayList<Integer> scaled = new ArrayList<>();
+
+        // Scale doubles to integers
+        for (double d : doubleList)
+            scaled.add((int) Math.round(d * SCALING_FACTOR));
+
+        // Sort scaled integers
+        radixSortInt(scaled);
+
+        // Convert back to doubles
+        for (int i = 0; i < n; i++)
+            doubleList.set(i, scaled.get(i) / (double) SCALING_FACTOR);
+
+        return doubleList.toString();
+    }
 
 }
