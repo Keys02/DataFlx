@@ -81,20 +81,6 @@ public class StageController
         return searchNum;
     }
 
-    public void displayInputError() {
-        System.out.println(ANSI.RED + "⚠️: Incorrect choice, try again" + ANSI.RESET);
-        System.out.print("\n");
-    }
-
-    public void searchNumInputError() {
-        System.out.println(ANSI.RED + "⚠️: Incorrect input: Enter an integer or decimal, try again" + ANSI.RESET);
-        System.out.print("\n");
-    }
-
-    public void incorrectDataSetInputError() {
-        System.out.println(ANSI.RED + "⚠️: Incorrect input: Enter a dataset containing only integer and decimal, try again" + ANSI.RESET);
-        System.out.print("\n");
-    }
 
     public void searchOperationResult(int searchedNumIndex, String notice, String runtimeInBigONotation) {
         System.out.println("Algorithm: " + ANSI.BLUE  + ANSI.BOLD + notice + ANSI.RESET);
@@ -106,6 +92,24 @@ public class StageController
         System.out.println("Algorithm: " + ANSI.BLUE  + ANSI.BOLD + notice + ANSI.RESET);
         System.out.println("Sorted Array: " + ANSI.PURPLE + arr + ANSI.RESET);
         System.out.println("Runtime in Big O Notation: " + ANSI.BOLD + ANSI.YELLOW + runtimeInBigONotation + ANSI.RESET + " in the worst case scenario.");
+    }
+
+    /*********************************
+ *          Error display section
+     *********************************/
+    public static void displayInputError() {
+        System.out.println(ANSI.RED + "⚠️: Incorrect choice, try again" + ANSI.RESET);
+        System.out.print("\n");
+    }
+
+    public static void searchNumInputError() {
+        System.out.println(ANSI.RED + "⚠️: Incorrect input: Enter an integer or decimal, try again" + ANSI.RESET);
+        System.out.print("\n");
+    }
+
+    public static void incorrectDataSetInputError() {
+        System.out.println(ANSI.RED + "⚠️: Incorrect input: Enter a dataset containing only integer and decimal, try again" + ANSI.RESET);
+        System.out.print("\n");
     }
 
 }
