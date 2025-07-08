@@ -19,7 +19,7 @@ public class StageController
     }
 
     public int searchOperation(Scanner scanner) {
-        System.out.println("Operation: " + ANSI.BLUE + ANSI.BOLD + "Sorting" + ANSI.RESET);
+        System.out.println("Operation: " + ANSI.BLUE + ANSI.BOLD + "Searching" + ANSI.RESET);
         System.out.println("1) Sequential search");
         System.out.println("2) Binary search");
         System.out.println("0) Back");
@@ -27,7 +27,6 @@ public class StageController
         // Enter choice
         System.out.print("input> ");
         int searchAlgoOption = scanner.nextInt();
-        System.out.print("\n");
         return searchAlgoOption;
     }
 
@@ -46,103 +45,71 @@ public class StageController
         // Enter choice
         System.out.print("input> ");
         int sortAlgoOption = scanner.nextInt();
-        System.out.print("\n");
         return sortAlgoOption;
     }
 
     public ArrayList<Double> inputDataSet(Scanner scanner, String notice) {
+        System.out.print("\n");
         System.out.println("Algorithm: " + ANSI.BOLD + ANSI.BLUE + notice + ANSI.RESET);
         System.out.println(ANSI.ORANGE + "Enter all numbers separated with comma or whitespace" + ANSI.RESET);
         System.out.print("input> ");
 
         // Enter dataset
         String numbersInput = scanner.nextLine();
-        System.out.print("\n");
 
         String[] numbersToArr = numbersInput.split("[,\\s+(, )]+"); // Splitting with multiple delimiters
 
         ArrayList<Double> nums = new ArrayList<Double>(numbersToArr.length);
 
         for (String s : numbersToArr) {
-//            try {
                 nums.add(Double.parseDouble(s));
-//            } catch (NumberFormatException e) {
-//                System.out.println("Warning: Enter only integers or decimals\n");
-//                System.exit(0);
-//            }
         }
         return nums;
     }
 
-    public List<Object> prepareFinalSearchOperation(String notice) {
-        List<Object> inputs = new ArrayList<>();
-
-        try {
-            List<Double> sortDataSet = this.inputDataSet(new Scanner(System.in), notice);
-            inputs.add(sortDataSet);
-        } catch(NumberFormatException e) {
-            this.incorrectDataSetInputError();
-//            List<Double> sortDataSet = this.inputDataSet(new Scanner(System.in), notice);
-//            inputs.add(sortDataSet);
-            this.prepareFinalSearchOperation(notice);
-        }
-
-        try {
-            double searchNum = this.searchNumber(new Scanner(System.in), notice);
-            inputs.add(searchNum);
-        } catch(InputMismatchException e) {
-            this.searchNumInputError();
-            double searchNum = this.searchNumber(new Scanner(System.in), notice);
-            inputs.add(searchNum);
-        }
-
-        return inputs;
-
-//        List<Double> sortDataSet = this.inputDataSet(new Scanner(System.in), notice);
-//        double searchNum = this.searchNumber(new Scanner(System.in), notice);
-//
-//        List<Object> inputs = new ArrayList<>();
-//        inputs.add(sortDataSet);
-//        inputs.add(searchNum);
-//        return inputs;
-    }
 
     public double searchNumber(Scanner scanner, String notice) {
+        System.out.print("\n");
         System.out.println("Algorithm: " + ANSI.BOLD + ANSI.BLUE + notice + ANSI.RESET);
         System.out.println(ANSI.ORANGE + "Enter the number you want to search" + ANSI.RESET);
         System.out.print("input> ");
 
         // Enter number to be searched
         double searchNum = scanner.nextDouble();
-        System.out.print("\n");
         return searchNum;
     }
 
-    public void displayInputError() {
-        System.out.println(ANSI.RED + "⚠️: Incorrect choice, try again" + ANSI.RESET);
-        System.out.print("\n");
-    }
-
-    public void searchNumInputError() {
-        System.out.println(ANSI.RED + "⚠️: Incorrect input: Enter an integer or decimal, try again" + ANSI.RESET);
-        System.out.print("\n");
-    }
-
-    public void incorrectDataSetInputError() {
-        System.out.println(ANSI.RED + "⚠️: Incorrect input: Enter a dataset containing only integer and decimal, try again" + ANSI.RESET);
-        System.out.print("\n");
-    }
 
     public void searchOperationResult(int searchedNumIndex, String notice, String runtimeInBigONotation) {
+        System.out.print("\n");
         System.out.println("Algorithm: " + ANSI.BLUE  + ANSI.BOLD + notice + ANSI.RESET);
         System.out.println("The number can be found at index " + ANSI.BOLD + ANSI.PURPLE + searchedNumIndex + ANSI.RESET);
         System.out.println("Runtime in Big O Notation: " + ANSI.BOLD + ANSI.YELLOW + runtimeInBigONotation + ANSI.RESET + " in the worst case scenario.");
     }
 
     public void sortOperationResult(String arr, String notice, String runtimeInBigONotation) {
+        System.out.print("\n");
         System.out.println("Algorithm: " + ANSI.BLUE  + ANSI.BOLD + notice + ANSI.RESET);
         System.out.println("Sorted Array: " + ANSI.PURPLE + arr + ANSI.RESET);
         System.out.println("Runtime in Big O Notation: " + ANSI.BOLD + ANSI.YELLOW + runtimeInBigONotation + ANSI.RESET + " in the worst case scenario.");
+    }
+
+    /*********************************
+ *          Error display section
+     *********************************/
+    public static void displayInputError() {
+        System.out.println(ANSI.RED + "⚠️: Your choice was not recognized. Please try again." + ANSI.RESET);
+        System.out.print("\n");
+    }
+
+    public static void searchNumInputError() {
+        System.out.println(ANSI.RED + "⚠️: Your input is invalid. Please enter an integer or a decimal number." + ANSI.RESET);
+        System.out.print("\n");
+    }
+
+    public static void incorrectDataSetInputError() {
+        System.out.println(ANSI.RED + "⚠️: The dataset you entered contains invalid characters. Please ensure your dataset contains only integers and decimals." + ANSI.RESET);
+        System.out.print("\n");
     }
 
 }
