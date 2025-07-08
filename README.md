@@ -16,4 +16,7 @@ Implemented in **Java**🍵
 - Shell sort
 - Bucket sort
 
+## Screenshot
+![DataFlx screenshot](screenshots/DataFlx.gif)
+
 **Author**: Keys🚀
