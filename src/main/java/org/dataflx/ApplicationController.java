@@ -39,14 +39,14 @@ public class ApplicationController
             case 1: {
                         List<Object> userDataSet = stageController.prepareFinalSearchOperation("Sequential search");
                         int searchedNumIndex = AlgorithmRepository.sequentialSearch((List<Double>) userDataSet.getFirst(), (Double) userDataSet.getLast());
-                        stageController.searchOperationResult(searchedNumIndex, "O(n)");
+                        stageController.searchOperationResult(searchedNumIndex, "Sequential search", "O(n)");
                         break;
                     }
 
             case 2: {
                         List<Object> userDataSet = stageController.prepareFinalSearchOperation("Binary search");
                         int searchedNumIndex = AlgorithmRepository.binarySearch((List<Double>) userDataSet.getFirst(), (Double) userDataSet.getLast());
-                        stageController.searchOperationResult(searchedNumIndex, "O(log n)");
+                        stageController.searchOperationResult(searchedNumIndex, "Binary search", "O(log n)");
                         break;
                     }
 

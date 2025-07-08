@@ -98,7 +98,8 @@ public class StageController
         System.out.println(ANSI.RED + "⚠️: Incorrect choice, try again" + ANSI.RESET);
     }
 
-    public void searchOperationResult(int searchedNumIndex, String runtime) {
+    public void searchOperationResult(int searchedNumIndex, String notice, String runtime) {
+        System.out.println("Algorithm: " + ANSI.BLUE  + ANSI.BOLD + notice + ANSI.RESET);
         System.out.println("The number can be found at index " + ANSI.BOLD + ANSI.PURPLE + searchedNumIndex + ANSI.RESET);
         System.out.println("Runtime in Big O Notation: " + ANSI.BOLD + ANSI.YELLOW + runtime + ANSI.RESET + " in the worse case scenario.");
     }
