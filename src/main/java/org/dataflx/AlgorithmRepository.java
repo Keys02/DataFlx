@@ -57,7 +57,7 @@ public class AlgorithmRepository
     /*******************************************
                     Bubble sort
      ******************************************/
-    public static String bubbleSort(List<Double> arr) {
+    public static List<Double> bubbleSort(List<Double> arr) {
         int n = arr.size();
         boolean swapped;
 
@@ -75,7 +75,7 @@ public class AlgorithmRepository
                 break;
         }
 
-        return arr.toString();
+        return arr;
     }
 
     /*******************************************

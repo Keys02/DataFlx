@@ -94,6 +94,19 @@ public class StageController
         System.out.println("Runtime in Big O Notation: " + ANSI.BOLD + ANSI.YELLOW + runtimeInBigONotation + ANSI.RESET + " in the worst case scenario.");
     }
 
+    public static String makeSortedListReadable(List<Double> arr) {
+        List<Number> IntegerList = new ArrayList<>();
+
+        for (Double aDouble : arr) {
+            if (aDouble % 1 == 0) {
+                IntegerList.add(aDouble.intValue());
+            } else {
+                IntegerList.add(aDouble);
+            }
+        }
+        return IntegerList.toString();
+    }
+
     /*********************************
  *          Error display section
      *********************************/

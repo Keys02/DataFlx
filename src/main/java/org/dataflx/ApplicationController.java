@@ -103,7 +103,7 @@ public class ApplicationController
                 case 1: {
                     try {
                         List<Double> userDataSet = stageController.inputDataSet(new Scanner(System.in), "Bubble sort");
-                        String sortedArray = AlgorithmRepository.bubbleSort(userDataSet);
+                        String sortedArray = StageController.makeSortedListReadable(AlgorithmRepository.bubbleSort(userDataSet));
                         stageController.sortOperationResult(sortedArray, "Bubble sort", "O(n²)");
                     } catch (NumberFormatException e) {
                         StageController.incorrectDataSetInputError();
