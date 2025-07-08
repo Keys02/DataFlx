@@ -37,25 +37,30 @@ public class ApplicationController
                 this.flushApp();
                 break;
             case 1: {
-//                    List<Object> userInputs = prepareSearch();
-//                    int searchedNumIndex = AlgorithmRepository.sequentialSearch((List<Double>) userInputs.getFirst(), (Double) userInputs.getLast());
-//                    System.out.println("The number can be found at index  " + searchedNumIndex);
+                    List<Object> userInputs = this.prepareSearch("Sequential search");
+                    int searchedNumIndex = AlgorithmRepository.sequentialSearch((List<Double>) userInputs.getFirst(), (Double) userInputs.getLast());
+                    System.out.println("The number can be found at index  " + ANSI.PURPLE + searchedNumIndex + ANSI.RESET);
                     break;
                 }
             case 2: {
-//                    List<Object> userInputs = processDataSetAndSearchNum();
-//                    int searchedNumIndex = AlgorithmRepository.binarySearch((List<Double>) userInputs.getFirst(), (Double) userInputs.getLast());
-//                    System.out.println("The number can be found at index  " + searchedNumIndex);
+                    List<Object> userInputs = this.prepareSearch("Binary search");
+                    int searchedNumIndex = AlgorithmRepository.binarySearch((List<Double>) userInputs.getFirst(), (Double) userInputs.getLast());
+                    System.out.println("The number can be found at index  " + ANSI.PURPLE + searchedNumIndex + ANSI.RESET);
                     break;
                     }
             default:
-                stageController.searchOperation(new Scanner(System.in));
+                stageController.displayInputError();
+                this.processSearch();
         }
     }
 
-    private List<Object> prepareSearch() {
+    private List<Object> prepareSearch(String notice) {
+        System.out.println("Algorithm: " + ANSI.BLUE + ANSI.BOLD + notice + ANSI.RESET);
         List<Double> sortDataSet = stageController.inputDataSet(new Scanner(System.in));
+
+        System.out.println("Algorithm: " + ANSI.BLUE + ANSI.BOLD + notice + ANSI.RESET);
         double searchNum = stageController.searchNumber(new Scanner(System.in));
+
         List<Object> inputs = new ArrayList<>();
         inputs.add(sortDataSet);
         inputs.add(searchNum);
