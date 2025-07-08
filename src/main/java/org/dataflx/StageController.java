@@ -27,7 +27,6 @@ public class StageController
         // Enter choice
         System.out.print("input> ");
         int searchAlgoOption = scanner.nextInt();
-        System.out.print("\n");
         return searchAlgoOption;
     }
 
@@ -46,18 +45,17 @@ public class StageController
         // Enter choice
         System.out.print("input> ");
         int sortAlgoOption = scanner.nextInt();
-        System.out.print("\n");
         return sortAlgoOption;
     }
 
     public ArrayList<Double> inputDataSet(Scanner scanner, String notice) {
+        System.out.print("\n");
         System.out.println("Algorithm: " + ANSI.BOLD + ANSI.BLUE + notice + ANSI.RESET);
         System.out.println(ANSI.ORANGE + "Enter all numbers separated with comma or whitespace" + ANSI.RESET);
         System.out.print("input> ");
 
         // Enter dataset
         String numbersInput = scanner.nextLine();
-        System.out.print("\n");
 
         String[] numbersToArr = numbersInput.split("[,\\s+(, )]+"); // Splitting with multiple delimiters
 
@@ -71,24 +69,26 @@ public class StageController
 
 
     public double searchNumber(Scanner scanner, String notice) {
+        System.out.print("\n");
         System.out.println("Algorithm: " + ANSI.BOLD + ANSI.BLUE + notice + ANSI.RESET);
         System.out.println(ANSI.ORANGE + "Enter the number you want to search" + ANSI.RESET);
         System.out.print("input> ");
 
         // Enter number to be searched
         double searchNum = scanner.nextDouble();
-        System.out.print("\n");
         return searchNum;
     }
 
 
     public void searchOperationResult(int searchedNumIndex, String notice, String runtimeInBigONotation) {
+        System.out.print("\n");
         System.out.println("Algorithm: " + ANSI.BLUE  + ANSI.BOLD + notice + ANSI.RESET);
         System.out.println("The number can be found at index " + ANSI.BOLD + ANSI.PURPLE + searchedNumIndex + ANSI.RESET);
         System.out.println("Runtime in Big O Notation: " + ANSI.BOLD + ANSI.YELLOW + runtimeInBigONotation + ANSI.RESET + " in the worst case scenario.");
     }
 
     public void sortOperationResult(String arr, String notice, String runtimeInBigONotation) {
+        System.out.print("\n");
         System.out.println("Algorithm: " + ANSI.BLUE  + ANSI.BOLD + notice + ANSI.RESET);
         System.out.println("Sorted Array: " + ANSI.PURPLE + arr + ANSI.RESET);
         System.out.println("Runtime in Big O Notation: " + ANSI.BOLD + ANSI.YELLOW + runtimeInBigONotation + ANSI.RESET + " in the worst case scenario.");
