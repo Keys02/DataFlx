@@ -57,7 +57,7 @@ public class AlgorithmRepository
     /*******************************************
                     Bubble sort
      ******************************************/
-    public static String bubbleSort(List<Double> arr) {
+    public static List<Double> bubbleSort(List<Double> arr) {
         int n = arr.size();
         boolean swapped;
 
@@ -75,13 +75,13 @@ public class AlgorithmRepository
                 break;
         }
 
-        return arr.toString();
+        return arr;
     }
 
     /*******************************************
                     Quick sort
      ******************************************/
-    public static String quickSort(List<Double> arr, int low, int high) {
+    public static List<Double> quickSort(List<Double> arr, int low, int high) {
         //Set the initial high and low values
         if (low < high) {
             int pi = partition(arr, low, high);
@@ -89,7 +89,7 @@ public class AlgorithmRepository
             quickSort(arr, pi + 1, high);
         }
 
-        return arr.toString();
+        return arr;
     }
 
     private static int partition(List<Double> arr, int low, int high) {
@@ -112,7 +112,7 @@ public class AlgorithmRepository
     /*******************************************
                     Insertion sort
      ******************************************/
-    public static String insertionSort(List<Double> arr) {
+    public static List<Double> insertionSort(List<Double> arr) {
         for(int i = 1; i < arr.size(); ++i) {
             double prevElem = arr.get(i);
             int j;
@@ -121,7 +121,7 @@ public class AlgorithmRepository
             }
             arr.set(j + 1, prevElem);
         }
-        return arr.toString();
+        return arr;
     }
 
     /*******************************************
@@ -163,20 +163,20 @@ public class AlgorithmRepository
         }
     }
 
-    public static String mergeSort(List<Double> arr, int low, int high) {
+    public static List<Double> mergeSort(List<Double> arr, int low, int high) {
         if (low >= high) { return null; }
         int mid = (low + high) / 2 ;
         mergeSort(arr, low, mid);  // left half
         mergeSort(arr, mid + 1, high); // right half
         merge(arr, low, mid, high);  // merging sorted halves
-        return arr.toString();
+        return arr;
     }
 
 
     /*******************************************
                     Heap sort
      ******************************************/
-    public static String heapSort(List<Double> arr) {
+    public static List<Double> heapSort(List<Double> arr) {
         int n = arr.size();
         for (int i = n / 2 - 1; i >= 0; i--) {
             heapify(arr, n, i);
@@ -187,7 +187,7 @@ public class AlgorithmRepository
             arr.set(i, temp);
             heapify(arr, i, 0);
         }
-        return arr.toString();
+        return arr;
     }
 
     private static void heapify(List<Double> arr, int n, int i) {
@@ -255,7 +255,7 @@ public class AlgorithmRepository
     }
 
     // Main radix sort for doubles
-    public static String radixSort(List<Double> doubleList) {
+    public static List<Double> radixSort(List<Double> doubleList) {
         int n = doubleList.size();
         ArrayList<Integer> scaled = new ArrayList<>();
 
@@ -270,13 +270,13 @@ public class AlgorithmRepository
         for (int i = 0; i < n; i++)
             doubleList.set(i, scaled.get(i) / (double) SCALING_FACTOR);
 
-        return doubleList.toString();
+        return doubleList;
     }
 
     /*******************************************
                     Shell sort
      ******************************************/
-    public static String shellSort(List<Double> list) {
+    public static List<Double> shellSort(List<Double> list) {
         int n = list.size();
 
         // Start with a large gap, then reduce the gap
@@ -296,13 +296,13 @@ public class AlgorithmRepository
                 list.set(j, temp);
             }
         }
-        return list.toString();
+        return list;
     }
 
     /*******************************************
                     Bucket sort
      ******************************************/
-    public static String bucketSort(List<Double> list) {
+    public static List<Double> bucketSort(List<Double> list) {
         if (list.isEmpty()) return null;
 
         int n = list.size();
@@ -331,7 +331,7 @@ public class AlgorithmRepository
             list.addAll(bucket);
         }
 
-        return list.toString();
+        return list;
     }
 
 }

@@ -1,9 +1,6 @@
 package org.dataflx;
 
-import java.util.List;
-import java.util.Scanner;
-import java.util.InputMismatchException;
-import java.util.ArrayList;
+import java.util.*;
 
 public class ApplicationController
 {
@@ -103,7 +100,7 @@ public class ApplicationController
                 case 1: {
                     try {
                         List<Double> userDataSet = stageController.inputDataSet(new Scanner(System.in), "Bubble sort");
-                        String sortedArray = AlgorithmRepository.bubbleSort(userDataSet);
+                        String sortedArray = StageController.makeSortedListReadable(AlgorithmRepository.bubbleSort(userDataSet));
                         stageController.sortOperationResult(sortedArray, "Bubble sort", "O(n²)");
                     } catch (NumberFormatException e) {
                         StageController.incorrectDataSetInputError();
@@ -114,7 +111,7 @@ public class ApplicationController
                 case 2: {
                     try {
                         List<Double> userDataSet = stageController.inputDataSet(new Scanner(System.in), "Quick sort");
-                        String sortedArray = AlgorithmRepository.quickSort(userDataSet, 0, userDataSet.size() - 1);
+                        String sortedArray = StageController.makeSortedListReadable(AlgorithmRepository.quickSort(userDataSet, 0, userDataSet.size() - 1));
                         stageController.sortOperationResult(sortedArray, "Quick sort", "0(n²)");
                     } catch (NumberFormatException e) {
                         StageController.incorrectDataSetInputError();
@@ -125,7 +122,7 @@ public class ApplicationController
                 case 3: {
                     try {
                         List<Double> userDataSet = stageController.inputDataSet(new Scanner(System.in), "Insertion sort");
-                        String sortedArray = AlgorithmRepository.insertionSort(userDataSet);
+                        String sortedArray = StageController.makeSortedListReadable(AlgorithmRepository.insertionSort(userDataSet));
                         stageController.sortOperationResult(sortedArray, "Insertion sort", "0(n²)");
                     } catch (NumberFormatException e) {
                         StageController.incorrectDataSetInputError();
@@ -136,7 +133,7 @@ public class ApplicationController
                 case 4: {
                     try {
                         List<Double> userDataSet = stageController.inputDataSet(new Scanner(System.in), "Merge sort");
-                        String sortedArray = AlgorithmRepository.mergeSort(userDataSet, 0, userDataSet.size() - 1);
+                        String sortedArray = StageController.makeSortedListReadable(Objects.requireNonNull(AlgorithmRepository.mergeSort(userDataSet, 0, userDataSet.size() - 1)));
                         stageController.sortOperationResult(sortedArray, "Merge sort", "O(n log n)");
                     } catch (NumberFormatException e) {
                         StageController.incorrectDataSetInputError();
@@ -147,7 +144,7 @@ public class ApplicationController
                 case 5: {
                     try {
                         List<Double> userDataSet = stageController.inputDataSet(new Scanner(System.in), "Heap sort");
-                        String sortedArray = AlgorithmRepository.heapSort(userDataSet);
+                        String sortedArray = StageController.makeSortedListReadable(AlgorithmRepository.heapSort(userDataSet));
                         stageController.sortOperationResult(sortedArray, "Heap sort", "O(n log n)");
                     } catch (NumberFormatException e) {
                         StageController.incorrectDataSetInputError();
@@ -158,7 +155,7 @@ public class ApplicationController
                 case 6: {
                     try {
                         List<Double> userDataSet = stageController.inputDataSet(new Scanner(System.in), "Radix sort");
-                        String sortedArray = AlgorithmRepository.radixSort(userDataSet);
+                        String sortedArray = StageController.makeSortedListReadable(AlgorithmRepository.radixSort(userDataSet));
                         stageController.sortOperationResult(sortedArray, "Radix sort", "O(nk)");
                     } catch (NumberFormatException e) {
                         StageController.incorrectDataSetInputError();
@@ -169,7 +166,7 @@ public class ApplicationController
                 case 7: {
                     try {
                         List<Double> userDataSet = stageController.inputDataSet(new Scanner(System.in), "Shell sort");
-                        String sortedArray = AlgorithmRepository.shellSort(userDataSet);
+                        String sortedArray = StageController.makeSortedListReadable(AlgorithmRepository.shellSort(userDataSet));
                         stageController.sortOperationResult(sortedArray, "Shell sort", "0(n²)");
                     } catch (NumberFormatException e) {
                         StageController.incorrectDataSetInputError();
@@ -180,7 +177,7 @@ public class ApplicationController
                 case 8: {
                     try {
                         List<Double> userDataSet = stageController.inputDataSet(new Scanner(System.in), "Bucket sort");
-                        String sortedArray = AlgorithmRepository.bucketSort(userDataSet);
+                        String sortedArray = StageController.makeSortedListReadable(Objects.requireNonNull(AlgorithmRepository.bucketSort(userDataSet)));
                         stageController.sortOperationResult(sortedArray, "Bucket sort", "O(n²)");
                     } catch (NumberFormatException e) {
                         StageController.incorrectDataSetInputError();
