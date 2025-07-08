@@ -107,6 +107,12 @@ public class ApplicationController
                         stageController.sortOperationResult(sortedArray, "Shell sort");
                 break;
                     }
+            case 8: {
+                        List<Double> userDataSet = stageController.inputDataSet(new Scanner(System.in), "Bucket sort");
+                        String sortedArray = AlgorithmRepository.bucketSort(userDataSet);
+                        stageController.sortOperationResult(sortedArray, "Bucket sort");
+                break;
+            }
             default:
                 stageController.displayInputError();
                 stageController.sortOperation(new Scanner(System.in));

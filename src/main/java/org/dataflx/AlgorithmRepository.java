@@ -274,7 +274,7 @@ public class AlgorithmRepository
     }
 
     /*******************************************
-                Shell sort
+                    Shell sort
      ******************************************/
     public static String shellSort(List<Double> list) {
         int n = list.size();
@@ -296,6 +296,41 @@ public class AlgorithmRepository
                 list.set(j, temp);
             }
         }
+        return list.toString();
+    }
+
+    /*******************************************
+                    Bucket sort
+     ******************************************/
+    public static String bucketSort(List<Double> list) {
+        if (list.isEmpty()) return null;
+
+        int n = list.size();
+        List<List<Double>> buckets = new ArrayList<>(n);
+
+        // Create empty buckets
+        for (int i = 0; i < n; i++) {
+            buckets.add(new ArrayList<>());
+        }
+
+        // Find min and max to scale values into buckets
+        double min = Collections.min(list);
+        double max = Collections.max(list);
+        double range = max - min;
+
+        // Distribute elements into buckets
+        for (double value : list) {
+            int index = (int) ((value - min) / range * (n - 1));
+            buckets.get(index).add(value);
+        }
+
+        // Sort each bucket and concatenate results
+        list.clear();
+        for (List<Double> bucket : buckets) {
+            Collections.sort(bucket); // You can use insertion sort here for small buckets
+            list.addAll(bucket);
+        }
+
         return list.toString();
     }
 

@@ -39,6 +39,7 @@ public class StageController
         System.out.println("5) Heap sort");
         System.out.println("6) Radix sort");
         System.out.println("7) Shell sort");
+        System.out.println("8) Bucket sort");
         System.out.println("0) Back");
 
         // Enter choice
