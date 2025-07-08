@@ -8,7 +8,7 @@ public class DataFlx
             app.run();
 
         } catch (Exception e) {
-            System.out.println(ANSI.RED + "[FATAL_0x001A] 💥 An unrecoverable error has occurred and the application must close." + ANSI.RESET);
+            System.out.println(ANSI.RED + "[FATAL_0x001A] 💀 An unrecoverable error has occurred and the application must close." + ANSI.RESET);
         }
     }
 }
