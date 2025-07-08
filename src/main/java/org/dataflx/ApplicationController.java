@@ -102,9 +102,9 @@ public class ApplicationController
                 break;
                     }
             case 7: {
-                        List<Double> userDataSet = stageController.inputDataSet(new Scanner(System.in), "Radix sort");
+                        List<Double> userDataSet = stageController.inputDataSet(new Scanner(System.in), "Shell sort");
                         String sortedArray = AlgorithmRepository.shellSort(userDataSet);
-                        stageController.sortOperationResult(sortedArray, "Radix sort");
+                        stageController.sortOperationResult(sortedArray, "Shell sort");
                 break;
                     }
             default:

@@ -273,4 +273,30 @@ public class AlgorithmRepository
         return doubleList.toString();
     }
 
+    /*******************************************
+                Shell sort
+     ******************************************/
+    public static String shellSort(List<Double> list) {
+        int n = list.size();
+
+        // Start with a large gap, then reduce the gap
+        for (int gap = n / 2; gap > 0; gap /= 2) {
+            // Do a gapped insertion sort for this gap size
+            for (int i = gap; i < n; i++) {
+                double temp = list.get(i);
+                int j = i;
+
+                // Shift earlier gap-sorted elements up until the correct location is found
+                while (j >= gap && list.get(j - gap) > temp) {
+                    list.set(j, list.get(j - gap));
+                    j -= gap;
+                }
+
+                // Put temp in its correct location
+                list.set(j, temp);
+            }
+        }
+        return list.toString();
+    }
+
 }
