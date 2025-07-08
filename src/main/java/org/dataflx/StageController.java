@@ -96,18 +96,19 @@ public class StageController
 
     public void displayInputError() {
         System.out.println(ANSI.RED + "⚠️: Incorrect choice, try again" + ANSI.RESET);
+        System.out.print("\n");
     }
 
     public void searchOperationResult(int searchedNumIndex, String notice, String runtimeInBigONotation) {
         System.out.println("Algorithm: " + ANSI.BLUE  + ANSI.BOLD + notice + ANSI.RESET);
         System.out.println("The number can be found at index " + ANSI.BOLD + ANSI.PURPLE + searchedNumIndex + ANSI.RESET);
-        System.out.println("Runtime in Big O Notation: " + ANSI.BOLD + ANSI.YELLOW + runtimeInBigONotation + ANSI.RESET + " in the worse case scenario.");
+        System.out.println("Runtime in Big O Notation: " + ANSI.BOLD + ANSI.YELLOW + runtimeInBigONotation + ANSI.RESET + " in the worst case scenario.");
     }
 
     public void sortOperationResult(String arr, String notice, String runtimeInBigONotation) {
         System.out.println("Algorithm: " + ANSI.BLUE  + ANSI.BOLD + notice + ANSI.RESET);
         System.out.println("Sorted Array: " + ANSI.PURPLE + arr + ANSI.RESET);
-        System.out.println("Runtime in Big O Notation: " + ANSI.BOLD + ANSI.YELLOW + runtimeInBigONotation + ANSI.RESET + " in the worse case scenario.");
+        System.out.println("Runtime in Big O Notation: " + ANSI.BOLD + ANSI.YELLOW + runtimeInBigONotation + ANSI.RESET + " in the worst case scenario.");
     }
 
 }
