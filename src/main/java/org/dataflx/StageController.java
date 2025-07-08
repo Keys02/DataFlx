@@ -3,6 +3,7 @@ package org.dataflx;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.util.InputMismatchException;
 
 public class StageController
 {
@@ -63,24 +64,47 @@ public class StageController
         ArrayList<Double> nums = new ArrayList<Double>(numbersToArr.length);
 
         for (String s : numbersToArr) {
-            try {
+//            try {
                 nums.add(Double.parseDouble(s));
-            } catch (NumberFormatException e) {
-                System.out.println("Warning: Enter only integers or decimals\n");
-                System.exit(0);
-            }
+//            } catch (NumberFormatException e) {
+//                System.out.println("Warning: Enter only integers or decimals\n");
+//                System.exit(0);
+//            }
         }
         return nums;
     }
 
     public List<Object> prepareFinalSearchOperation(String notice) {
-        List<Double> sortDataSet = this.inputDataSet(new Scanner(System.in), notice);
-        double searchNum = this.searchNumber(new Scanner(System.in), notice);
-
         List<Object> inputs = new ArrayList<>();
-        inputs.add(sortDataSet);
-        inputs.add(searchNum);
+
+        try {
+            List<Double> sortDataSet = this.inputDataSet(new Scanner(System.in), notice);
+            inputs.add(sortDataSet);
+        } catch(NumberFormatException e) {
+            this.incorrectDataSetInputError();
+//            List<Double> sortDataSet = this.inputDataSet(new Scanner(System.in), notice);
+//            inputs.add(sortDataSet);
+            this.prepareFinalSearchOperation(notice);
+        }
+
+        try {
+            double searchNum = this.searchNumber(new Scanner(System.in), notice);
+            inputs.add(searchNum);
+        } catch(InputMismatchException e) {
+            this.searchNumInputError();
+            double searchNum = this.searchNumber(new Scanner(System.in), notice);
+            inputs.add(searchNum);
+        }
+
         return inputs;
+
+//        List<Double> sortDataSet = this.inputDataSet(new Scanner(System.in), notice);
+//        double searchNum = this.searchNumber(new Scanner(System.in), notice);
+//
+//        List<Object> inputs = new ArrayList<>();
+//        inputs.add(sortDataSet);
+//        inputs.add(searchNum);
+//        return inputs;
     }
 
     public double searchNumber(Scanner scanner, String notice) {
@@ -96,6 +120,16 @@ public class StageController
 
     public void displayInputError() {
         System.out.println(ANSI.RED + "⚠️: Incorrect choice, try again" + ANSI.RESET);
+        System.out.print("\n");
+    }
+
+    public void searchNumInputError() {
+        System.out.println(ANSI.RED + "⚠️: Incorrect input: Enter an integer or decimal, try again" + ANSI.RESET);
+        System.out.print("\n");
+    }
+
+    public void incorrectDataSetInputError() {
+        System.out.println(ANSI.RED + "⚠️: Incorrect input: Enter a dataset containing only integer and decimal, try again" + ANSI.RESET);
         System.out.print("\n");
     }
 

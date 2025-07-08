@@ -58,6 +58,16 @@ public class ApplicationController
                     this.flushApp();
                     break;
                 case 1: {
+//                    try {
+//                        List<Object> userDataSet = stageController.prepareFinalSearchOperation("Sequential search");
+//                        int searchedNumIndex = AlgorithmRepository.sequentialSearch((List<Double>) userDataSet.getFirst(), (Double) userDataSet.getLast());
+//                        stageController.searchOperationResult(searchedNumIndex, "Sequential search", "O(n)");
+//                    } catch(NumberFormatException e) {
+//                        stageController.displayInputError();
+//                        List<Object> userDataSet = stageController.prepareFinalSearchOperation("Sequential search");
+//                        int searchedNumIndex = AlgorithmRepository.sequentialSearch((List<Double>) userDataSet.getFirst(), (Double) userDataSet.getLast());
+//                        stageController.searchOperationResult(searchedNumIndex, "Sequential search", "O(n)");
+//                    }
                     List<Object> userDataSet = stageController.prepareFinalSearchOperation("Sequential search");
                     int searchedNumIndex = AlgorithmRepository.sequentialSearch((List<Double>) userDataSet.getFirst(), (Double) userDataSet.getLast());
                     stageController.searchOperationResult(searchedNumIndex, "Sequential search", "O(n)");
