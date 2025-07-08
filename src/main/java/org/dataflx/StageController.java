@@ -75,8 +75,7 @@ public class StageController
         System.out.print("input> ");
 
         // Enter number to be searched
-        double searchNum = scanner.nextDouble();
-        return searchNum;
+        return scanner.nextDouble();
     }
 
 
