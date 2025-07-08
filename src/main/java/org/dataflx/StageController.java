@@ -8,17 +8,18 @@ import java.util.InputMismatchException;
 public class StageController
 {
     public int actionOperation(Scanner scanner) {
+        System.out.print("\n");
         System.out.println("Operation");
         System.out.println("1) Searching");
         System.out.println("2) Sorting");
 
         System.out.print("input> ");
         int operation = scanner.nextInt();
-        System.out.print("\n");
         return operation;
     }
 
     public int searchOperation(Scanner scanner) {
+        System.out.print("\n");
         System.out.println("Operation: " + ANSI.BLUE + ANSI.BOLD + "Searching" + ANSI.RESET);
         System.out.println("1) Sequential search");
         System.out.println("2) Binary search");
@@ -31,6 +32,7 @@ public class StageController
     }
 
     public int sortOperation(Scanner scanner) {
+        System.out.print("\n");
         System.out.println("Operation: " + ANSI.BLUE + ANSI.BOLD + "Sorting" + ANSI.RESET);
         System.out.println("1) Bubble sort");
         System.out.println("2) Quick sort");
@@ -111,17 +113,14 @@ public class StageController
      *********************************/
     public static void displayInputError() {
         System.out.println(ANSI.RED + "⚠️: Your choice was not recognized. Please try again." + ANSI.RESET);
-        System.out.print("\n");
     }
 
     public static void searchNumInputError() {
         System.out.println(ANSI.RED + "⚠️: Your input is invalid. Please enter an integer or a decimal number." + ANSI.RESET);
-        System.out.print("\n");
     }
 
     public static void incorrectDataSetInputError() {
         System.out.println(ANSI.RED + "⚠️: The dataset you entered contains invalid characters. Please ensure your dataset contains only integers and decimals." + ANSI.RESET);
-        System.out.print("\n");
     }
 
 }
