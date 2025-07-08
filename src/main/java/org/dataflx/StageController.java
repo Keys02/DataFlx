@@ -98,17 +98,17 @@ public class StageController
  *          Error display section
      *********************************/
     public static void displayInputError() {
-        System.out.println(ANSI.RED + "⚠️: Incorrect choice, try again" + ANSI.RESET);
+        System.out.println(ANSI.RED + "⚠️: Your choice was not recognized. Please try again." + ANSI.RESET);
         System.out.print("\n");
     }
 
     public static void searchNumInputError() {
-        System.out.println(ANSI.RED + "⚠️: Incorrect input: Enter an integer or decimal, try again" + ANSI.RESET);
+        System.out.println(ANSI.RED + "⚠️: Your input is invalid. Please enter an integer or a decimal number." + ANSI.RESET);
         System.out.print("\n");
     }
 
     public static void incorrectDataSetInputError() {
-        System.out.println(ANSI.RED + "⚠️: Incorrect input: Enter a dataset containing only integer and decimal, try again" + ANSI.RESET);
+        System.out.println(ANSI.RED + "⚠️: The dataset you entered contains invalid characters. Please ensure your dataset contains only integers and decimals." + ANSI.RESET);
         System.out.print("\n");
     }
 
