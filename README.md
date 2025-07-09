@@ -1,22 +1,22 @@
-# DATAFLX
-A CLI application abstracting the searching and sorting algorithms providing you with an interface to input your dataset and then it takes it from there.  
-Implemented in **Java**🍵
+# 🔍📊 DataFlx – Search & Sort CLI (Java)
+DataFlx is a lightweight ⚡ Java-based application that runs in your terminal 💻 and allows you to:
 
-## Algorithms implemented in the application
-### Searching algorithms🔎  
-- Sequential (Linear) search
-- Binary search
-### Sorting algorithms🔀
-- Bubble sort
-- Quick sort
-- Insertion sort
-- Merge sort
-- Heap sort
-- Radix sort
-- Shell sort
-- Bucket sort
+🔎 Choose a searching algorithm (e.g., Linear Search, Binary Search)
+
+🌀 Choose a sorting algorithm (e.g., Bubble Sort, Merge Sort, Quick Sort)
+
+🧮 Input a custom dataset (numbers or strings)
+
+📈 View results instantly or follow the step-by-step process
+
+🎯 Perfect for:
+👨‍🎓 Students learning algorithms
+
+👩‍💻 Developers needing quick sort/search tools
+
+🧠 Anyone curious about how classic algorithms work
 
 ## Screenshot
 ![DataFlx screenshot](screenshots/DataFlx.gif)
 
-**Author**: Keys🚀
+#### **Author**: Keys🚀
