@@ -3,7 +3,7 @@ package org.dataflx;
 public class DataFlx
 {
     public static void main(String[] args) {
-        Application app = new Application();
+        Application app = Application.getInstance();
         try {
             app.run();
         } catch (Exception e) {
