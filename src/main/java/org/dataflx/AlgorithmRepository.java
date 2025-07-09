@@ -23,7 +23,7 @@ public class AlgorithmRepository
     }
 
     /*******************************************
-            Binary (Linear) search
+            Binary search
      ******************************************/
     public static int binarySearch(List<Double> arr, double key) {
         //Clone the original array
