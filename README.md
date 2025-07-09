@@ -16,7 +16,7 @@ DataFlx is a lightweight ⚡ Java-based application that runs in your terminal �
 
 🧠 Anyone curious about how classic algorithms work
 
-## Screenshot
+## 📸Screenshot
 ![DataFlx screenshot](screenshots/DataFlx.gif)
 
 #### **Author**: Keys🚀
