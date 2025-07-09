@@ -9,7 +9,7 @@ Implemented in **Java**🍵
 ### Sorting algorithms🔀
 - Bubble sort
 - Quick sort
-- Insertion
+- Insertion sort
 - Merge sort
 - Heap sort
 - Radix sort
