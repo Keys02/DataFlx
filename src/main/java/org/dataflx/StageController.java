@@ -12,9 +12,9 @@ public class StageController
         System.out.println("1) Searching");
         System.out.println("2) Sorting");
 
+        // Choice entry
         System.out.print("input> ");
-        int operation = scanner.nextInt();
-        return operation;
+        return scanner.nextInt();
     }
 
     public int searchOperation(Scanner scanner) {
@@ -24,10 +24,9 @@ public class StageController
         System.out.println("2) Binary search");
         System.out.println("0) Back");
 
-        // Enter choice
+        // Choice entry
         System.out.print("input> ");
-        int searchAlgoOption = scanner.nextInt();
-        return searchAlgoOption;
+        return scanner.nextInt();
     }
 
     public int sortOperation(Scanner scanner) {
@@ -43,12 +42,12 @@ public class StageController
         System.out.println("8) Bucket sort");
         System.out.println("0) Back");
 
-        // Enter choice
+        // Choice entry
         System.out.print("input> ");
-        int sortAlgoOption = scanner.nextInt();
-        return sortAlgoOption;
+        return scanner.nextInt();
     }
 
+    //
     public ArrayList<Double> inputDataSet(Scanner scanner, String notice) {
         System.out.print("\n");
         System.out.println("Algorithm: " + ANSI.BOLD + ANSI.BLUE + notice + ANSI.RESET);
@@ -73,9 +72,9 @@ public class StageController
         System.out.print("\n");
         System.out.println("Algorithm: " + ANSI.BOLD + ANSI.BLUE + notice + ANSI.RESET);
         System.out.println(ANSI.ORANGE + "Enter the number you want to search" + ANSI.RESET);
-        System.out.print("input> ");
 
-        // Enter number to be searched
+        // Choice entry
+        System.out.print("input> ");
         return scanner.nextDouble();
     }
 
@@ -95,8 +94,10 @@ public class StageController
     }
 
     public static String makeSortedListReadable(List<Double> arr) {
+        // An empty to store all instances of numbers ie Integer, Double, Float etc
         List<Number> IntegerList = new ArrayList<>();
 
+        // Parse the numbers as Double type
         for (Double aDouble : arr) {
             if (aDouble % 1 == 0) {
                 IntegerList.add(aDouble.intValue());
@@ -108,7 +109,7 @@ public class StageController
     }
 
     /*********************************
- *          Error display section
+            Error display section
      *********************************/
     public static void displayInputError() {
         System.out.println(ANSI.RED + "⚠️: Your choice was not recognized. Please try again." + ANSI.RESET);
