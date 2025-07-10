@@ -60,8 +60,8 @@ public class ApplicationController
 
                 case 2: {
                     try {
-                        List<Double> userDataSet = stageController.inputDataSet(new Scanner(System.in), "Sequential search");
-                        double searchedNum = stageController.searchNumber(new Scanner(System.in), "Sequential search");
+                        List<Double> userDataSet = stageController.inputDataSet(new Scanner(System.in), "Binary search");
+                        double searchedNum = stageController.searchNumber(new Scanner(System.in), "Binary search");
                         int searchedNumIndex = AlgorithmRepository.binarySearch(userDataSet, searchedNum);
                         stageController.searchOperationResult(searchedNumIndex, "Binary search", "O(log n)");
                     } catch (InputMismatchException | NumberFormatException e) {
