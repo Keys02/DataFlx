@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class StageController
 {
-    public int actionOperation(Scanner scanner) {
+    public int actionOperation(Scanner scanner) throws UnrecognizedChoiceException {
         System.out.print("\n");
         System.out.println("Operation");
         System.out.println("1) Searching");
@@ -14,10 +14,16 @@ public class StageController
 
         // Choice entry
         System.out.print("input> ");
-        return scanner.nextInt();
+        int choice = scanner.nextInt();
+
+        if (choice > 0 && choice < 3) {
+            return choice;
+        } else {
+            throw new UnrecognizedChoiceException("Unrecognized choice");
+        }
     }
 
-    public int searchOperation(Scanner scanner) {
+    public int searchOperation(Scanner scanner) throws UnrecognizedChoiceException {
         System.out.print("\n");
         System.out.println("Operation: " + ANSI.BLUE + ANSI.BOLD + "Searching" + ANSI.RESET);
         System.out.println("1) Sequential search");
@@ -26,10 +32,16 @@ public class StageController
 
         // Choice entry
         System.out.print("input> ");
-        return scanner.nextInt();
+        int choice = scanner.nextInt();
+
+        if (choice >= 0 && choice <= 2) {
+            return choice;
+        } else {
+            throw new UnrecognizedChoiceException("Unrecognized choice");
+        }
     }
 
-    public int sortOperation(Scanner scanner) {
+    public int sortOperation(Scanner scanner) throws UnrecognizedChoiceException {
         System.out.print("\n");
         System.out.println("Operation: " + ANSI.BLUE + ANSI.BOLD + "Sorting" + ANSI.RESET);
         System.out.println("1) Bubble sort");
@@ -44,14 +56,21 @@ public class StageController
 
         // Choice entry
         System.out.print("input> ");
-        return scanner.nextInt();
+
+        int choice = scanner.nextInt();
+
+        if (choice >= 0 && choice <= 2) {
+            return choice;
+        } else {
+            throw new UnrecognizedChoiceException("Unrecognized choice");
+        }
     }
 
     //
     public ArrayList<Double> inputDataSet(Scanner scanner, String notice) {
         System.out.print("\n");
         System.out.println("Algorithm: " + ANSI.BOLD + ANSI.BLUE + notice + ANSI.RESET);
-        System.out.println(ANSI.ORANGE + "Enter all numbers separated with comma or whitespace" + ANSI.RESET);
+        System.out.println(ANSI.ORANGE + "Enter all numbers, using commas or whitespace as separators." + ANSI.RESET);
         System.out.print("input> ");
 
         // Enter dataset
@@ -71,7 +90,7 @@ public class StageController
     public double searchNumber(Scanner scanner, String notice) {
         System.out.print("\n");
         System.out.println("Algorithm: " + ANSI.BOLD + ANSI.BLUE + notice + ANSI.RESET);
-        System.out.println(ANSI.ORANGE + "Enter the number you want to search" + ANSI.RESET);
+        System.out.println(ANSI.ORANGE + "Enter the number to be searched" + ANSI.RESET);
 
         // Choice entry
         System.out.print("input> ");
@@ -93,7 +112,7 @@ public class StageController
         System.out.println("Runtime in Big O Notation: " + ANSI.BOLD + ANSI.YELLOW + runtimeInBigONotation + ANSI.RESET + " in the worst case scenario.");
     }
 
-    public static String makeSortedListReadable(List<Double> arr) {
+    public String makeSortedListReadable(List<Double> arr) {
         // An empty to store all instances of numbers ie Integer, Double, Float etc
         List<Number> IntegerList = new ArrayList<>();
 
@@ -110,16 +129,16 @@ public class StageController
 
     /*********************************
             Error display section
-     *********************************/
-    public static void displayInputError() {
+    *********************************/
+    public void unrecognizedChoiceError() {
         System.out.println(ANSI.RED + "⚠️: Your choice was not recognized. Please try again." + ANSI.RESET);
     }
 
-    public static void searchNumInputError() {
-        System.out.println(ANSI.RED + "⚠️: Your input is invalid. Please enter an integer or a decimal number." + ANSI.RESET);
+    public void invalidInputError() {
+        System.out.println(ANSI.RED + "⚠️: Your input was invalid. Please enter a number" + ANSI.RESET);
     }
 
-    public static void incorrectDataSetInputError() {
+    public void incorrectDataSetInputError() {
         System.out.println(ANSI.RED + "⚠️: The dataset you entered contains invalid characters. Please ensure your dataset contains only integers and decimals." + ANSI.RESET);
     }
 

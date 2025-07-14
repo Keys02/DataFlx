@@ -23,11 +23,15 @@ public class ApplicationController
                     this.processSort();
                     break;
                 default:
-                    StageController.displayInputError();
+                    stageController.unrecognizedChoiceError();
                     this.flushApp();
             }
-        } catch(InputMismatchException e) {
-            StageController.displayInputError();
+        } catch(UnrecognizedChoiceException | InputMismatchException e) {
+            if (e instanceof UnrecognizedChoiceException) {
+                stageController.unrecognizedChoiceError();
+            } else {
+                stageController.invalidInputError();
+            }
             flushApp();
         }
     }
@@ -44,48 +48,34 @@ public class ApplicationController
                     break;
                 case 1: {
                     // Sequential search
-                        try {
-                            List<Double> userDataSet = stageController.inputDataSet(new Scanner(System.in), "Sequential search");
-                            double searchedNum = stageController.searchNumber(new Scanner(System.in), "Sequential search");
-                            int searchedNumIndex = AlgorithmRepository.sequentialSearch(userDataSet, searchedNum);
-                            stageController.searchOperationResult(searchedNumIndex, "Sequential search", "O(n)");
-                        } catch (InputMismatchException | NumberFormatException e) {
-                            // Handle users not entering a number as an element of a dataset or a search number exception
-                            if (e instanceof NumberFormatException) {
-                                StageController.incorrectDataSetInputError();
-                            } else {
-                                StageController.searchNumInputError();
-                            }
-                            this.processSearch();
-                        }
+                        List<Double> userDataSet = stageController.inputDataSet(new Scanner(System.in), "Sequential search");
+                        double searchedNum = stageController.searchNumber(new Scanner(System.in), "Sequential search");
+                        int searchedNumIndex = AlgorithmRepository.sequentialSearch(userDataSet, searchedNum);
+                        stageController.searchOperationResult(searchedNumIndex, "Sequential search", "O(n)");
                         break;
                 }
 
                 case 2: {
                     // Binary search
-                    try {
-                        List<Double> userDataSet = stageController.inputDataSet(new Scanner(System.in), "Binary search");
-                        double searchedNum = stageController.searchNumber(new Scanner(System.in), "Binary search");
-                        int searchedNumIndex = AlgorithmRepository.binarySearch(userDataSet, searchedNum);
-                        stageController.searchOperationResult(searchedNumIndex, "Binary search", "O(log n)");
-                    } catch (InputMismatchException | NumberFormatException e) {
-                        // Handle users not entering a number as an element of a dataset or a search number exception
-                        if (e instanceof NumberFormatException) {
-                            StageController.incorrectDataSetInputError();
-                        } else {
-                            StageController.searchNumInputError();
-                        }
-                        this.processSearch();
-                    }
+                    List<Double> userDataSet = stageController.inputDataSet(new Scanner(System.in), "Binary search");
+                    double searchedNum = stageController.searchNumber(new Scanner(System.in), "Binary search");
+                    int searchedNumIndex = AlgorithmRepository.binarySearch(userDataSet, searchedNum);
+                    stageController.searchOperationResult(searchedNumIndex, "Binary search", "O(log n)");
                     break;
                 }
 
                 default:
-                    StageController.displayInputError();
+                    stageController.unrecognizedChoiceError();
                     this.processSearch();
             }
-        } catch(InputMismatchException | NumberFormatException e) {
-            StageController.displayInputError();
+        } catch(UnrecognizedChoiceException | InputMismatchException | NumberFormatException e) {
+            if (e instanceof UnrecognizedChoiceException) {
+                stageController.unrecognizedChoiceError();
+            } else if (e instanceof NumberFormatException) {
+                stageController.incorrectDataSetInputError();
+            } else {
+                stageController.invalidInputError();
+            }
             this.processSearch();
         }
     }
@@ -102,116 +92,83 @@ public class ApplicationController
                     // Back
                     this.flushApp();
                     break;
+
                 case 1: {
                     // Bubble sort
-                    try {
-                        List<Double> userDataSet = stageController.inputDataSet(new Scanner(System.in), "Bubble sort");
-                        String sortedArray = StageController.makeSortedListReadable(AlgorithmRepository.bubbleSort(userDataSet));
-                        stageController.sortOperationResult(sortedArray, "Bubble sort", "O(n²)");
-                    } catch (NumberFormatException e) {
-                        // Handle exception when a member of the dataset cannot be parsed as a Double
-                        StageController.incorrectDataSetInputError();
-                        this.processSort();
-                    }
+                    List<Double> userDataSet = stageController.inputDataSet(new Scanner(System.in), "Bubble sort");
+                    String sortedArray = stageController.makeSortedListReadable(AlgorithmRepository.bubbleSort(userDataSet));
+                    stageController.sortOperationResult(sortedArray, "Bubble sort", "O(n²)");
                     break;
                 }
+
                 case 2: {
                     // Quick sort
-                    try {
-                        List<Double> userDataSet = stageController.inputDataSet(new Scanner(System.in), "Quick sort");
-                        String sortedArray = StageController.makeSortedListReadable(AlgorithmRepository.quickSort(userDataSet, 0, userDataSet.size() - 1));
-                        stageController.sortOperationResult(sortedArray, "Quick sort", "0(n²)");
-                    } catch (NumberFormatException e) {
-                        // Handle exception when a member of the dataset cannot be parsed as a Double
-                        StageController.incorrectDataSetInputError();
-                        this.processSort();
-                    }
+                    List<Double> userDataSet = stageController.inputDataSet(new Scanner(System.in), "Quick sort");
+                    String sortedArray = stageController.makeSortedListReadable(AlgorithmRepository.quickSort(userDataSet, 0, userDataSet.size() - 1));
+                    stageController.sortOperationResult(sortedArray, "Quick sort", "0(n²)");
                     break;
                 }
+
                 case 3: {
                     // Insertion sort
-                    try {
-                        List<Double> userDataSet = stageController.inputDataSet(new Scanner(System.in), "Insertion sort");
-                        String sortedArray = StageController.makeSortedListReadable(AlgorithmRepository.insertionSort(userDataSet));
-                        stageController.sortOperationResult(sortedArray, "Insertion sort", "0(n²)");
-                    } catch (NumberFormatException e) {
-                        // Handle exception when a member of the dataset cannot be parsed as a Double
-                        StageController.incorrectDataSetInputError();
-                        this.processSort();
-                    }
-                break;
+                    List<Double> userDataSet = stageController.inputDataSet(new Scanner(System.in), "Insertion sort");
+                    String sortedArray = stageController.makeSortedListReadable(AlgorithmRepository.insertionSort(userDataSet));
+                    stageController.sortOperationResult(sortedArray, "Insertion sort", "0(n²)");
+                    break;
                 }
+
                 case 4: {
                     // Merge sort
-                    try {
-                        List<Double> userDataSet = stageController.inputDataSet(new Scanner(System.in), "Merge sort");
-                        String sortedArray = StageController.makeSortedListReadable(Objects.requireNonNull(AlgorithmRepository.mergeSort(userDataSet, 0, userDataSet.size() - 1)));
-                        stageController.sortOperationResult(sortedArray, "Merge sort", "O(n log n)");
-                    } catch (NumberFormatException e) {
-                        // Handle exception when a member of the dataset cannot be parsed as a Double
-                        StageController.incorrectDataSetInputError();
-                        this.processSort();
-                    }
+                    List<Double> userDataSet = stageController.inputDataSet(new Scanner(System.in), "Merge sort");
+                    String sortedArray = stageController.makeSortedListReadable(Objects.requireNonNull(AlgorithmRepository.mergeSort(userDataSet, 0, userDataSet.size() - 1)));
+                    stageController.sortOperationResult(sortedArray, "Merge sort", "O(n log n)");
                     break;
                 }
+
                 case 5: {
                     // Heap sort
-                    try {
-                        List<Double> userDataSet = stageController.inputDataSet(new Scanner(System.in), "Heap sort");
-                        String sortedArray = StageController.makeSortedListReadable(AlgorithmRepository.heapSort(userDataSet));
-                        stageController.sortOperationResult(sortedArray, "Heap sort", "O(n log n)");
-                    } catch (NumberFormatException e) {
-                        // Handle exception when a member of the dataset cannot be parsed as a Double
-                        StageController.incorrectDataSetInputError();
-                        this.processSort();
-                    }
+                    List<Double> userDataSet = stageController.inputDataSet(new Scanner(System.in), "Heap sort");
+                    String sortedArray = stageController.makeSortedListReadable(AlgorithmRepository.heapSort(userDataSet));
+                    stageController.sortOperationResult(sortedArray, "Heap sort", "O(n log n)");
                     break;
                 }
+
                 case 6: {
                     // Radix sort
-                    try {
-                        List<Double> userDataSet = stageController.inputDataSet(new Scanner(System.in), "Radix sort");
-                        String sortedArray = StageController.makeSortedListReadable(AlgorithmRepository.radixSort(userDataSet));
-                        stageController.sortOperationResult(sortedArray, "Radix sort", "O(nk)");
-                    } catch (NumberFormatException e) {
-                        // Handle exception when a member of the dataset cannot be parsed as a Double
-                        StageController.incorrectDataSetInputError();
-                        this.processSort();
-                    }
+                    List<Double> userDataSet = stageController.inputDataSet(new Scanner(System.in), "Radix sort");
+                    String sortedArray = stageController.makeSortedListReadable(AlgorithmRepository.radixSort(userDataSet));
+                    stageController.sortOperationResult(sortedArray, "Radix sort", "O(nk)");
                     break;
                 }
+
                 case 7: {
                     // Shell sort
-                    try {
-                        List<Double> userDataSet = stageController.inputDataSet(new Scanner(System.in), "Shell sort");
-                        String sortedArray = StageController.makeSortedListReadable(AlgorithmRepository.shellSort(userDataSet));
-                        stageController.sortOperationResult(sortedArray, "Shell sort", "0(n²)");
-                    } catch (NumberFormatException e) {
-                        // Handle exception when a member of the dataset cannot be parsed as a Double
-                        StageController.incorrectDataSetInputError();
-                        this.processSort();
-                    }
+                    List<Double> userDataSet = stageController.inputDataSet(new Scanner(System.in), "Shell sort");
+                    String sortedArray = stageController.makeSortedListReadable(AlgorithmRepository.shellSort(userDataSet));
+                    stageController.sortOperationResult(sortedArray, "Shell sort", "0(n²)");
                     break;
                 }
+
                 case 8: {
                     // Bucket sort
-                    try {
-                        List<Double> userDataSet = stageController.inputDataSet(new Scanner(System.in), "Bucket sort");
-                        String sortedArray = StageController.makeSortedListReadable(Objects.requireNonNull(AlgorithmRepository.bucketSort(userDataSet)));
-                        stageController.sortOperationResult(sortedArray, "Bucket sort", "O(n²)");
-                    } catch (NumberFormatException e) {
-                        // Handle exception when a member of the dataset cannot be parsed as a Double
-                        StageController.incorrectDataSetInputError();
-                        this.processSort();
-                    }
+                    List<Double> userDataSet = stageController.inputDataSet(new Scanner(System.in), "Bucket sort");
+                    String sortedArray = stageController.makeSortedListReadable(Objects.requireNonNull(AlgorithmRepository.bucketSort(userDataSet)));
+                    stageController.sortOperationResult(sortedArray, "Bucket sort", "O(n²)");
                     break;
                 }
+
                 default:
-                    StageController.displayInputError();
-                    stageController.sortOperation(new Scanner(System.in));
+                    stageController.unrecognizedChoiceError();
+                    this.processSort();
             }
-        } catch(InputMismatchException e) {
-            StageController.displayInputError();
+        } catch(UnrecognizedChoiceException | InputMismatchException | NumberFormatException e) {
+            if (e instanceof NumberFormatException) {
+                stageController.incorrectDataSetInputError();
+            } else if (e instanceof InputMismatchException) {
+                stageController.invalidInputError();
+            } else {
+                stageController.unrecognizedChoiceError();
+            }
             this.processSort();
         }
     }
