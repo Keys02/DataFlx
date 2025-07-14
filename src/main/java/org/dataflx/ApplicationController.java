@@ -23,11 +23,15 @@ public class ApplicationController
                     this.processSort();
                     break;
                 default:
-                    StageController.displayInputError();
+                    stageController.unrecognizedChoiceError();
                     this.flushApp();
             }
-        } catch(InputMismatchException e) {
-            StageController.displayInputError();
+        } catch(UnrecognizedChoiceException | InputMismatchException e) {
+            if (e instanceof UnrecognizedChoiceException) {
+                stageController.unrecognizedChoiceError();
+            } else {
+                stageController.invalidInputError();
+            }
             flushApp();
         }
     }
@@ -61,14 +65,16 @@ public class ApplicationController
                 }
 
                 default:
-                    StageController.displayInputError();
+                    stageController.unrecognizedChoiceError();
                     this.processSearch();
             }
-        } catch(InputMismatchException | NumberFormatException e) {
-            if (e instanceof NumberFormatException) {
-                StageController.incorrectDataSetInputError();
+        } catch(UnrecognizedChoiceException | InputMismatchException | NumberFormatException e) {
+            if (e instanceof UnrecognizedChoiceException) {
+                stageController.unrecognizedChoiceError();
+            } else if (e instanceof NumberFormatException) {
+                stageController.incorrectDataSetInputError();
             } else {
-                StageController.searchNumInputError();
+                stageController.invalidInputError();
             }
             this.processSearch();
         }
@@ -90,7 +96,7 @@ public class ApplicationController
                 case 1: {
                     // Bubble sort
                     List<Double> userDataSet = stageController.inputDataSet(new Scanner(System.in), "Bubble sort");
-                    String sortedArray = StageController.makeSortedListReadable(AlgorithmRepository.bubbleSort(userDataSet));
+                    String sortedArray = stageController.makeSortedListReadable(AlgorithmRepository.bubbleSort(userDataSet));
                     stageController.sortOperationResult(sortedArray, "Bubble sort", "O(n²)");
                     break;
                 }
@@ -98,7 +104,7 @@ public class ApplicationController
                 case 2: {
                     // Quick sort
                     List<Double> userDataSet = stageController.inputDataSet(new Scanner(System.in), "Quick sort");
-                    String sortedArray = StageController.makeSortedListReadable(AlgorithmRepository.quickSort(userDataSet, 0, userDataSet.size() - 1));
+                    String sortedArray = stageController.makeSortedListReadable(AlgorithmRepository.quickSort(userDataSet, 0, userDataSet.size() - 1));
                     stageController.sortOperationResult(sortedArray, "Quick sort", "0(n²)");
                     break;
                 }
@@ -106,7 +112,7 @@ public class ApplicationController
                 case 3: {
                     // Insertion sort
                     List<Double> userDataSet = stageController.inputDataSet(new Scanner(System.in), "Insertion sort");
-                    String sortedArray = StageController.makeSortedListReadable(AlgorithmRepository.insertionSort(userDataSet));
+                    String sortedArray = stageController.makeSortedListReadable(AlgorithmRepository.insertionSort(userDataSet));
                     stageController.sortOperationResult(sortedArray, "Insertion sort", "0(n²)");
                     break;
                 }
@@ -114,7 +120,7 @@ public class ApplicationController
                 case 4: {
                     // Merge sort
                     List<Double> userDataSet = stageController.inputDataSet(new Scanner(System.in), "Merge sort");
-                    String sortedArray = StageController.makeSortedListReadable(Objects.requireNonNull(AlgorithmRepository.mergeSort(userDataSet, 0, userDataSet.size() - 1)));
+                    String sortedArray = stageController.makeSortedListReadable(Objects.requireNonNull(AlgorithmRepository.mergeSort(userDataSet, 0, userDataSet.size() - 1)));
                     stageController.sortOperationResult(sortedArray, "Merge sort", "O(n log n)");
                     break;
                 }
@@ -122,7 +128,7 @@ public class ApplicationController
                 case 5: {
                     // Heap sort
                     List<Double> userDataSet = stageController.inputDataSet(new Scanner(System.in), "Heap sort");
-                    String sortedArray = StageController.makeSortedListReadable(AlgorithmRepository.heapSort(userDataSet));
+                    String sortedArray = stageController.makeSortedListReadable(AlgorithmRepository.heapSort(userDataSet));
                     stageController.sortOperationResult(sortedArray, "Heap sort", "O(n log n)");
                     break;
                 }
@@ -130,7 +136,7 @@ public class ApplicationController
                 case 6: {
                     // Radix sort
                     List<Double> userDataSet = stageController.inputDataSet(new Scanner(System.in), "Radix sort");
-                    String sortedArray = StageController.makeSortedListReadable(AlgorithmRepository.radixSort(userDataSet));
+                    String sortedArray = stageController.makeSortedListReadable(AlgorithmRepository.radixSort(userDataSet));
                     stageController.sortOperationResult(sortedArray, "Radix sort", "O(nk)");
                     break;
                 }
@@ -138,7 +144,7 @@ public class ApplicationController
                 case 7: {
                     // Shell sort
                     List<Double> userDataSet = stageController.inputDataSet(new Scanner(System.in), "Shell sort");
-                    String sortedArray = StageController.makeSortedListReadable(AlgorithmRepository.shellSort(userDataSet));
+                    String sortedArray = stageController.makeSortedListReadable(AlgorithmRepository.shellSort(userDataSet));
                     stageController.sortOperationResult(sortedArray, "Shell sort", "0(n²)");
                     break;
                 }
@@ -146,17 +152,23 @@ public class ApplicationController
                 case 8: {
                     // Bucket sort
                     List<Double> userDataSet = stageController.inputDataSet(new Scanner(System.in), "Bucket sort");
-                    String sortedArray = StageController.makeSortedListReadable(Objects.requireNonNull(AlgorithmRepository.bucketSort(userDataSet)));
+                    String sortedArray = stageController.makeSortedListReadable(Objects.requireNonNull(AlgorithmRepository.bucketSort(userDataSet)));
                     stageController.sortOperationResult(sortedArray, "Bucket sort", "O(n²)");
                     break;
                 }
 
                 default:
-                    StageController.displayInputError();
+                    stageController.unrecognizedChoiceError();
                     this.processSort();
             }
-        } catch(InputMismatchException | NumberFormatException e) {
-            StageController.incorrectDataSetInputError();
+        } catch(UnrecognizedChoiceException | InputMismatchException | NumberFormatException e) {
+            if (e instanceof NumberFormatException) {
+                stageController.incorrectDataSetInputError();
+            } else if (e instanceof InputMismatchException) {
+                stageController.invalidInputError();
+            } else {
+                stageController.unrecognizedChoiceError();
+            }
             this.processSort();
         }
     }
