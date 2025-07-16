@@ -129,7 +129,11 @@ public class StageController
 
     public String reflashApp(Scanner scanner) {
         System.out.print("\n");
-        System.out.println("Would you like to keep going (yes/no)");
+        System.out.println("Would you like to keep going?");
+
+        // Choice entry
+        System.out.println("[Y] Yes [N] No");
+        System.out.print("input> ");
         return scanner.nextLine();
     }
 
