@@ -59,7 +59,7 @@ public class StageController
 
         int choice = scanner.nextInt();
 
-        if (choice >= 0 && choice <= 2) {
+        if (choice >= 0 && choice <= 8) {
             return choice;
         } else {
             throw new UnrecognizedChoiceException("Unrecognized choice");
