@@ -78,6 +78,14 @@ public class ApplicationController
             }
             this.processSearch();
         }
+
+        String reflashAppResponse = stageController.reflashApp(new Scanner(System.in));
+
+        if (reflashAppResponse.equalsIgnoreCase("y")) {
+            this.flushApp();
+        } else {
+            System.exit(0);
+        }
     }
 
 
@@ -170,6 +178,14 @@ public class ApplicationController
                 stageController.unrecognizedChoiceError();
             }
             this.processSort();
+        }
+
+        String reflashAppResponse = stageController.reflashApp(new Scanner(System.in));
+
+        if (reflashAppResponse.equalsIgnoreCase("y")) {
+            this.flushApp();
+        } else {
+            System.exit(0);
         }
     }
 }

@@ -127,6 +127,12 @@ public class StageController
         return IntegerList.toString();
     }
 
+    public String reflashApp(Scanner scanner) {
+        System.out.print("\n");
+        System.out.println("Would you like to keep going (yes/no)");
+        return scanner.nextLine();
+    }
+
     /*********************************
             Error display section
     *********************************/
