@@ -184,21 +184,21 @@ public class ApplicationController
         }
 
         String reflashAppResponse = stageController.reflashApp(new Scanner(System.in));
-        if (reflashAppResponse.equalsIgnoreCase("y")) {
-            this.flushApp();
-        } else if (reflashAppResponse.equalsIgnoreCase("n")) {
-            stageController.exitWithFarewell();
-        }
+        this.checkReflashAppResponse(reflashAppResponse);
 
 
         while (!reflashAppResponse.equalsIgnoreCase("y") || !reflashAppResponse.equalsIgnoreCase("n")) {
             stageController.unrecognizedChoiceError();
             reflashAppResponse = stageController.reflashApp(new Scanner(System.in));
-            if (reflashAppResponse.equalsIgnoreCase("y")) {
-                this.flushApp();
-            } else if (reflashAppResponse.equalsIgnoreCase("n")) {
-                stageController.exitWithFarewell();
-            }
+            this.checkReflashAppResponse(reflashAppResponse);
+        }
+    }
+
+    private void checkReflashAppResponse(String reflashAppResponse) {
+        if (reflashAppResponse.equalsIgnoreCase("y")) {
+            this.flushApp();
+        } else if (reflashAppResponse.equalsIgnoreCase("n")) {
+            stageController.exitWithFarewell();
         }
     }
 }
