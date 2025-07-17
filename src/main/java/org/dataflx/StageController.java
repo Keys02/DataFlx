@@ -1,8 +1,11 @@
 package org.dataflx;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.FileReader;
 
 public class StageController
 {
@@ -66,12 +69,57 @@ public class StageController
         }
     }
 
-    //
+    public int dataSetInputMethod(Scanner scanner, String notice) throws UnrecognizedChoiceException {
+        System.out.print("\n");
+        System.out.println("Algorithm: " + ANSI.BOLD + ANSI.BLUE + notice + ANSI.RESET);
+        System.out.println(ANSI.ORANGE + "How would like to input your dataset?" + ANSI.RESET);
+        System.out.println("1) Input the dataset");
+        System.out.println("2) Upload file containing dataset");
+        System.out.println("0) Back");
+
+        // Choice entry
+        System.out.print("input> ");
+        int choice = scanner.nextInt();
+
+        if (choice >= 0 && choice <= 2) {
+            return choice;
+        } else {
+            throw new UnrecognizedChoiceException("Unrecognized choice");
+        }
+    }
+
+    public ArrayList<Double> readFromFile(Scanner filePath, String notice) {
+        System.out.print("\n");
+        System.out.println("Algorithm: " + ANSI.BOLD + ANSI.BLUE + notice + ANSI.RESET);
+        System.out.println(ANSI.ORANGE + "Enter the path of the file" + ANSI.RESET);
+        String file = filePath.nextLine();
+
+        // Create an instance of a BufferedReader
+        try {
+            BufferedReader fileReader = new BufferedReader(new FileReader(file));
+            System.out.println("Dataset read from file: " + fileReader.readLine());
+            String numbersInput = fileReader.readLine();
+            String[] numbersToArr = numbersInput.split("[,\\s+(, )]+"); // Splitting with multiple delimiters
+
+            ArrayList<Double> nums = new ArrayList<Double>(numbersToArr.length);
+
+            for (String s : numbersToArr) {
+                nums.add(Double.parseDouble(s));
+            }
+            return nums;
+        } catch (IOException e) {
+            System.out.println("File is not readable");
+        }
+        return null;
+    }
+
     public ArrayList<Double> inputDataSet(Scanner scanner, String notice) {
         System.out.print("\n");
         System.out.println("Algorithm: " + ANSI.BOLD + ANSI.BLUE + notice + ANSI.RESET);
         System.out.println(ANSI.ORANGE + "Enter all numbers, using commas or whitespace as separators." + ANSI.RESET);
         System.out.print("input> ");
+
+
 
         // Enter dataset
         String numbersInput = scanner.nextLine();
@@ -132,7 +180,7 @@ public class StageController
         System.out.println(ANSI.GREEN + "✅: Would you like to keep going?" + ANSI.RESET);
 
         // Choice entry
-        System.out.println(ANSI.YELLOW +"[Y] Yes  " + ANSI.RESET + "  [N] No");
+        System.out.println(ANSI.YELLOW + "[Y] Yes  " + ANSI.RESET + "  [N] No");
         System.out.print("input> ");
         return scanner.nextLine();
     }

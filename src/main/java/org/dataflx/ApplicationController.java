@@ -48,7 +48,7 @@ public class ApplicationController
                     break;
                 case 1: {
                     // Sequential search
-                        List<Double> userDataSet = stageController.inputDataSet(new Scanner(System.in), "Sequential search");
+                        List<Double> userDataSet = this.processDataSetEntryMethod(new Scanner(System.in), "Sequential search");
                         double searchedNum = stageController.searchNumber(new Scanner(System.in), "Sequential search");
                         int searchedNumIndex = AlgorithmRepository.sequentialSearch(userDataSet, searchedNum);
                         stageController.searchOperationResult(searchedNumIndex, "Sequential search", "O(n)");
@@ -201,5 +201,30 @@ public class ApplicationController
         } else if (reflashAppResponse.equalsIgnoreCase("n") || reflashAppResponse.equalsIgnoreCase("no")) {
             stageController.exitWithFarewell();
         }
+    }
+
+    private ArrayList<Double> processDataSetEntryMethod(Scanner scanner, String notice) {
+        ArrayList<Double> dataSet = null;
+        try {
+            int dataSetInputMethod = stageController.dataSetInputMethod(new Scanner(System.in), notice);
+
+            switch (dataSetInputMethod) {
+                case 0: {
+                    this.processSearch();
+                    break;
+                }
+                case 1: {
+                    dataSet = stageController.inputDataSet(scanner, notice);
+                    break;
+                }
+                case 2: {
+                    dataSet = stageController.readFromFile(scanner, notice);
+                    break;
+                }
+            }
+        } catch (UnrecognizedChoiceException e) {
+            stageController.unrecognizedChoiceError();
+        }
+        return dataSet;
     }
 }
