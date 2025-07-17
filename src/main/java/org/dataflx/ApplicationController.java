@@ -83,8 +83,11 @@ public class ApplicationController
 
         if (reflashAppResponse.equalsIgnoreCase("y") || reflashAppResponse.equalsIgnoreCase("yes")) {
             this.flushApp();
-        } else {
+        } else if (reflashAppResponse.equalsIgnoreCase("n") || reflashAppResponse.equalsIgnoreCase("no")) {
             System.exit(0);
+        } else {
+            stageController.unrecognizedChoiceError();
+            stageController.reflashApp(new Scanner(System.in));
         }
     }
 
@@ -169,7 +172,7 @@ public class ApplicationController
                     stageController.unrecognizedChoiceError();
                     this.processSort();
             }
-        } catch(UnrecognizedChoiceException | InputMismatchException | NumberFormatException e) {
+        } catch (UnrecognizedChoiceException | InputMismatchException | NumberFormatException e) {
             if (e instanceof NumberFormatException) {
                 stageController.incorrectDataSetInputError();
             } else if (e instanceof InputMismatchException) {
@@ -181,11 +184,21 @@ public class ApplicationController
         }
 
         String reflashAppResponse = stageController.reflashApp(new Scanner(System.in));
-
-        if (reflashAppResponse.equalsIgnoreCase("y") || reflashAppResponse.equalsIgnoreCase("yes")) {
+        if (reflashAppResponse.equalsIgnoreCase("y")) {
             this.flushApp();
-        } else {
-            System.exit(0);
+        } else if (reflashAppResponse.equalsIgnoreCase("n")) {
+            stageController.exitWithFarewell();
+        }
+
+
+        while (!reflashAppResponse.equalsIgnoreCase("y") || !reflashAppResponse.equalsIgnoreCase("n")) {
+            stageController.unrecognizedChoiceError();
+            reflashAppResponse = stageController.reflashApp(new Scanner(System.in));
+            if (reflashAppResponse.equalsIgnoreCase("y")) {
+                this.flushApp();
+            } else if (reflashAppResponse.equalsIgnoreCase("n")) {
+                stageController.exitWithFarewell();
+            }
         }
     }
 }

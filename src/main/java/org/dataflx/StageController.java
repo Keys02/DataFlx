@@ -137,6 +137,11 @@ public class StageController
         return scanner.nextLine();
     }
 
+    public void exitWithFarewell() {
+        System.out.println("Goodbye!!!");
+        System.exit(0);
+    }
+
     /*********************************
             Error display section
     *********************************/
