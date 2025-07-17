@@ -1,8 +1,11 @@
 package org.dataflx;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.FileReader;
 
 public class StageController
 {
@@ -66,7 +69,46 @@ public class StageController
         }
     }
 
-    //
+    public int dataSetInputMethod(Scanner scanner, String notice) throws UnrecognizedChoiceException {
+        System.out.print("\n");
+        System.out.println("Algorithm: " + ANSI.BOLD + ANSI.BLUE + notice + ANSI.RESET);
+        System.out.println(ANSI.ORANGE + "How would like to input your dataset?" + ANSI.RESET);
+        System.out.println("1) Enter the dataset");
+        System.out.println("2) Read from file containing dataset");
+        System.out.println("0) Back");
+
+        // Choice entry
+        System.out.print("input> ");
+        int choice = scanner.nextInt();
+
+        if (choice >= 0 && choice <= 2) {
+            return choice;
+        } else {
+            throw new UnrecognizedChoiceException("Unrecognized choice");
+        }
+    }
+
+    public ArrayList<Double> readFromFile(Scanner filePath, String notice) {
+        System.out.print("\n");
+        System.out.println("Algorithm: " + ANSI.BOLD + ANSI.BLUE + notice + ANSI.RESET);
+        System.out.println(ANSI.ORANGE + "Enter the path of the file" + ANSI.RESET);
+        System.out.print("input> ");
+        String file = filePath.nextLine();
+
+        // Create an instance of a BufferedReader
+        try {
+            BufferedReader fileReader = new BufferedReader(new FileReader(file));
+            String numbersInput = fileReader.readLine();
+            System.out.println("Dataset read from file: " + ANSI.PURPLE + "[" + numbersInput + "]" + ANSI.RESET);
+
+            return this.buildDataSet(filePath, numbersInput);
+        } catch (IOException e) {
+            this.fileDoesNotExistError();
+            System.exit(0);
+        }
+        return null;
+    }
+
     public ArrayList<Double> inputDataSet(Scanner scanner, String notice) {
         System.out.print("\n");
         System.out.println("Algorithm: " + ANSI.BOLD + ANSI.BLUE + notice + ANSI.RESET);
@@ -76,6 +118,11 @@ public class StageController
         // Enter dataset
         String numbersInput = scanner.nextLine();
 
+        return this.buildDataSet(scanner, numbersInput);
+    }
+
+    private ArrayList<Double> buildDataSet(Scanner scanner, String numbersInput) {
+        // Enter dataset
         String[] numbersToArr = numbersInput.split("[,\\s+(, )]+"); // Splitting with multiple delimiters
 
         ArrayList<Double> nums = new ArrayList<Double>(numbersToArr.length);
@@ -85,7 +132,6 @@ public class StageController
         }
         return nums;
     }
-
 
     public double searchNumber(Scanner scanner, String notice) {
         System.out.print("\n");
@@ -132,7 +178,7 @@ public class StageController
         System.out.println(ANSI.GREEN + "✅: Would you like to keep going?" + ANSI.RESET);
 
         // Choice entry
-        System.out.println(ANSI.YELLOW +"[Y] Yes  " + ANSI.RESET + "  [N] No");
+        System.out.println(ANSI.YELLOW + "[Y] Yes  " + ANSI.RESET + "  [N] No");
         System.out.print("input> ");
         return scanner.nextLine();
     }
@@ -156,6 +202,10 @@ public class StageController
 
     public void incorrectDataSetInputError() {
         System.out.println(ANSI.RED + "⚠️: The dataset you entered contains invalid characters. Please ensure your dataset contains only integers and decimals." + ANSI.RESET);
+    }
+
+    public void fileDoesNotExistError() {
+        System.out.println(ANSI.RED + "⚠️: The specified file could not be found. Please ensure the file exists and the path is correct." + ANSI.RESET);
     }
 
 }
