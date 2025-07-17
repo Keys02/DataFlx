@@ -97,7 +97,7 @@ public class StageController
         // Create an instance of a BufferedReader
         try {
             BufferedReader fileReader = new BufferedReader(new FileReader(file));
-            System.out.println("Dataset read from file: " + fileReader.readLine());
+            System.out.println("Dataset read from file: " + ANSI.PURPLE + "[" + fileReader.readLine() + "]" + ANSI.RESET);
             String numbersInput = fileReader.readLine();
             String[] numbersToArr = numbersInput.split("[,\\s+(, )]+"); // Splitting with multiple delimiters
 
@@ -118,8 +118,6 @@ public class StageController
         System.out.println("Algorithm: " + ANSI.BOLD + ANSI.BLUE + notice + ANSI.RESET);
         System.out.println(ANSI.ORANGE + "Enter all numbers, using commas or whitespace as separators." + ANSI.RESET);
         System.out.print("input> ");
-
-
 
         // Enter dataset
         String numbersInput = scanner.nextLine();
