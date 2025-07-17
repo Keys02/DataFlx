@@ -129,16 +129,17 @@ public class StageController
 
     public String reflashApp(Scanner scanner) {
         System.out.print("\n");
-        System.out.println(ANSI.GREEN + "✅Would you like to keep going?" + ANSI.RESET);
+        System.out.println(ANSI.GREEN + "✅: Would you like to keep going?" + ANSI.RESET);
 
         // Choice entry
-        System.out.println("[Y] Yes [N] No");
+        System.out.println(ANSI.YELLOW +"[Y] Yes  " + ANSI.RESET + "  [N] No");
         System.out.print("input> ");
         return scanner.nextLine();
     }
 
     public void exitWithFarewell() {
-        System.out.println("Goodbye!!!");
+        System.out.print("\n");
+        System.out.println("🙋🏽‍♂️: Goodbye!!!");
         System.exit(0);
     }
 
