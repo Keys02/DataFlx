@@ -78,6 +78,20 @@ public class ApplicationController
             }
             this.processSearch();
         }
+
+        String reflashAppResponse = stageController.reflashApp(new Scanner(System.in));
+        this.checkReflashAppResponse(reflashAppResponse);
+
+        while (
+                !reflashAppResponse.equalsIgnoreCase("y") ||
+                !reflashAppResponse.equalsIgnoreCase("n") ||
+                !reflashAppResponse.equalsIgnoreCase("yes") ||
+                !reflashAppResponse.equalsIgnoreCase("no")
+        ) {
+            stageController.unrecognizedChoiceError();
+            reflashAppResponse = stageController.reflashApp(new Scanner(System.in));
+            this.checkReflashAppResponse(reflashAppResponse);
+        }
     }
 
 
@@ -161,7 +175,7 @@ public class ApplicationController
                     stageController.unrecognizedChoiceError();
                     this.processSort();
             }
-        } catch(UnrecognizedChoiceException | InputMismatchException | NumberFormatException e) {
+        } catch (UnrecognizedChoiceException | InputMismatchException | NumberFormatException e) {
             if (e instanceof NumberFormatException) {
                 stageController.incorrectDataSetInputError();
             } else if (e instanceof InputMismatchException) {
@@ -170,6 +184,28 @@ public class ApplicationController
                 stageController.unrecognizedChoiceError();
             }
             this.processSort();
+        }
+
+        String reflashAppResponse = stageController.reflashApp(new Scanner(System.in));
+        this.checkReflashAppResponse(reflashAppResponse);
+
+        while (
+                !reflashAppResponse.equalsIgnoreCase("y") ||
+                !reflashAppResponse.equalsIgnoreCase("n") ||
+                !reflashAppResponse.equalsIgnoreCase("yes") ||
+                !reflashAppResponse.equalsIgnoreCase("no")
+        ) {
+                stageController.unrecognizedChoiceError();
+                reflashAppResponse = stageController.reflashApp(new Scanner(System.in));
+                this.checkReflashAppResponse(reflashAppResponse);
+        }
+    }
+
+    private void checkReflashAppResponse(String reflashAppResponse) {
+        if (reflashAppResponse.equalsIgnoreCase("y") || reflashAppResponse.equalsIgnoreCase("yes")) {
+            this.flushApp();
+        } else if (reflashAppResponse.equalsIgnoreCase("n") || reflashAppResponse.equalsIgnoreCase("no")) {
+            stageController.exitWithFarewell();
         }
     }
 }

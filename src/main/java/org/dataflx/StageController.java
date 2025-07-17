@@ -81,7 +81,7 @@ public class StageController
         ArrayList<Double> nums = new ArrayList<Double>(numbersToArr.length);
 
         for (String s : numbersToArr) {
-                nums.add(Double.parseDouble(s));
+            nums.add(Double.parseDouble(s));
         }
         return nums;
     }
@@ -125,6 +125,22 @@ public class StageController
             }
         }
         return IntegerList.toString();
+    }
+
+    public String reflashApp(Scanner scanner) {
+        System.out.print("\n");
+        System.out.println(ANSI.GREEN + "✅: Would you like to keep going?" + ANSI.RESET);
+
+        // Choice entry
+        System.out.println(ANSI.YELLOW +"[Y] Yes  " + ANSI.RESET + "  [N] No");
+        System.out.print("input> ");
+        return scanner.nextLine();
+    }
+
+    public void exitWithFarewell() {
+        System.out.print("\n");
+        System.out.print("🙋🏽‍♂️: Goodbye!!!");
+        System.exit(0);
     }
 
     /*********************************
