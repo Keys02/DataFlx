@@ -92,13 +92,14 @@ public class StageController
         System.out.print("\n");
         System.out.println("Algorithm: " + ANSI.BOLD + ANSI.BLUE + notice + ANSI.RESET);
         System.out.println(ANSI.ORANGE + "Enter the path of the file" + ANSI.RESET);
+        System.out.print("input> ");
         String file = filePath.nextLine();
 
         // Create an instance of a BufferedReader
         try {
             BufferedReader fileReader = new BufferedReader(new FileReader(file));
-            System.out.println("Dataset read from file: " + ANSI.PURPLE + "[" + fileReader.readLine() + "]" + ANSI.RESET);
             String numbersInput = fileReader.readLine();
+            System.out.println("Dataset read from file: " + ANSI.PURPLE + "[" + numbersInput + "]" + ANSI.RESET);
             String[] numbersToArr = numbersInput.split("[,\\s+(, )]+"); // Splitting with multiple delimiters
 
             ArrayList<Double> nums = new ArrayList<Double>(numbersToArr.length);

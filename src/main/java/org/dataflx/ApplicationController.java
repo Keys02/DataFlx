@@ -48,7 +48,7 @@ public class ApplicationController
                     break;
                 case 1: {
                     // Sequential search
-                        List<Double> userDataSet = this.processDataSetEntryMethod(new Scanner(System.in), "Sequential search");
+                        List<Double> userDataSet = this.processDataSetEntryMethod(new Scanner(System.in), "Sequential search", "Searching");
                         double searchedNum = stageController.searchNumber(new Scanner(System.in), "Sequential search");
                         int searchedNumIndex = AlgorithmRepository.sequentialSearch(userDataSet, searchedNum);
                         stageController.searchOperationResult(searchedNumIndex, "Sequential search", "O(n)");
@@ -203,14 +203,18 @@ public class ApplicationController
         }
     }
 
-    private ArrayList<Double> processDataSetEntryMethod(Scanner scanner, String notice) {
+    private ArrayList<Double> processDataSetEntryMethod(Scanner scanner, String notice, String operation) {
         ArrayList<Double> dataSet = null;
         try {
             int dataSetInputMethod = stageController.dataSetInputMethod(new Scanner(System.in), notice);
 
             switch (dataSetInputMethod) {
                 case 0: {
-                    this.processSearch();
+                    if (operation.equals("Searching")) {
+                        this.processSearch();
+                    } else {
+                        this.processSort();
+                    }
                     break;
                 }
                 case 1: {
