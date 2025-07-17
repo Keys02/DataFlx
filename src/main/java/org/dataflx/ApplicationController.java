@@ -187,7 +187,8 @@ public class ApplicationController
         this.checkReflashAppResponse(reflashAppResponse);
 
 
-        while (!reflashAppResponse.equalsIgnoreCase("y") || !reflashAppResponse.equalsIgnoreCase("n")) {
+
+        while (!reflashAppResponse.equalsIgnoreCase("y") || !reflashAppResponse.equalsIgnoreCase("n") || !reflashAppResponse.equalsIgnoreCase("yes") || !reflashAppResponse.equalsIgnoreCase("no")) {
             stageController.unrecognizedChoiceError();
             reflashAppResponse = stageController.reflashApp(new Scanner(System.in));
             this.checkReflashAppResponse(reflashAppResponse);
@@ -195,9 +196,9 @@ public class ApplicationController
     }
 
     private void checkReflashAppResponse(String reflashAppResponse) {
-        if (reflashAppResponse.equalsIgnoreCase("y")) {
+        if (reflashAppResponse.equalsIgnoreCase("y") || reflashAppResponse.equalsIgnoreCase("yes")) {
             this.flushApp();
-        } else if (reflashAppResponse.equalsIgnoreCase("n")) {
+        } else if (reflashAppResponse.equalsIgnoreCase("n") || reflashAppResponse.equalsIgnoreCase("no")) {
             stageController.exitWithFarewell();
         }
     }
