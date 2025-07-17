@@ -81,7 +81,7 @@ public class StageController
         ArrayList<Double> nums = new ArrayList<Double>(numbersToArr.length);
 
         for (String s : numbersToArr) {
-                nums.add(Double.parseDouble(s));
+            nums.add(Double.parseDouble(s));
         }
         return nums;
     }

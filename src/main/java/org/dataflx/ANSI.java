@@ -10,4 +10,5 @@ public class ANSI
     public static final String BOLD = "\u001b[1m";
     public static final String ORANGE = "\u001b[38;2;255;165;0m";
     public static final String PURPLE = "\u001B[35m";
+    public static final String GREEN = "\u001B[32m";
 }
