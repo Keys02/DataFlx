@@ -186,15 +186,12 @@ public class ApplicationController
             this.processSort();
         }
 
-        String reflashAppResponse = stageController.reflashApp(new Scanner(System.in));
+        String reflashAppResponse = stageController.reflashApp(new Scanner(System.in)).toLowerCase();
+        // Initialize HashSet with elements directly
+        Set<String> reflashAppResponseOptions = new HashSet<>(Arrays.asList("y", "yes", "n", "no"));
         this.checkReflashAppResponse(reflashAppResponse);
 
-        while (
-                !reflashAppResponse.equalsIgnoreCase("y") ||
-                !reflashAppResponse.equalsIgnoreCase("n") ||
-                !reflashAppResponse.equalsIgnoreCase("yes") ||
-                !reflashAppResponse.equalsIgnoreCase("no")
-        ) {
+        while (!reflashAppResponseOptions.contains(reflashAppResponse)) {
                 stageController.unrecognizedChoiceError();
                 reflashAppResponse = stageController.reflashApp(new Scanner(System.in));
                 this.checkReflashAppResponse(reflashAppResponse);
