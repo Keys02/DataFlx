@@ -1,5 +1,6 @@
 package org.dataflx;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -100,6 +101,8 @@ public class StageController
             BufferedReader fileReader = new BufferedReader(new FileReader(file));
             String numbersInput = fileReader.readLine();
             System.out.println("Dataset read from file: " + ANSI.PURPLE + "[" + numbersInput + "]" + ANSI.RESET);
+
+            //Build the dataset from string
             String[] numbersToArr = numbersInput.split("[,\\s+(, )]+"); // Splitting with multiple delimiters
 
             ArrayList<Double> nums = new ArrayList<Double>(numbersToArr.length);
@@ -109,7 +112,8 @@ public class StageController
             }
             return nums;
         } catch (IOException e) {
-            System.out.println("File is not readable");
+            this.fileDoesNotExistError();
+            System.exit(0);
         }
         return null;
     }
@@ -203,6 +207,10 @@ public class StageController
 
     public void incorrectDataSetInputError() {
         System.out.println(ANSI.RED + "⚠️: The dataset you entered contains invalid characters. Please ensure your dataset contains only integers and decimals." + ANSI.RESET);
+    }
+
+    public void fileDoesNotExistError() {
+        System.out.println(ANSI.RED + "⚠️: The file you are trying to read from does not exist" + ANSI.RESET);
     }
 
 }
