@@ -139,7 +139,7 @@ public class StageController
 
     public void exitWithFarewell() {
         System.out.print("\n");
-        System.out.println("🙋🏽‍♂️: Goodbye!!!");
+        System.out.print("🙋🏽‍♂️: Goodbye!!!");
         System.exit(0);
     }
 
