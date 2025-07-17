@@ -225,9 +225,24 @@ public class ApplicationController
                     dataSet = stageController.readFromFile(scanner, notice);
                     break;
                 }
+                default: {
+                    stageController.unrecognizedChoiceError();
+
+                    if (operation.equals("Searching")) {
+                        this.processSearch();
+                    } else {
+                        this.processSort();
+                    }
+                }
             }
         } catch (UnrecognizedChoiceException e) {
             stageController.unrecognizedChoiceError();
+
+            if (operation.equals("Searching")) {
+                this.processSearch();
+            } else {
+                this.processSort();
+            }
         }
         return dataSet;
     }

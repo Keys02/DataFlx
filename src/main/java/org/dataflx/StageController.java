@@ -1,6 +1,5 @@
 package org.dataflx;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -74,8 +73,8 @@ public class StageController
         System.out.print("\n");
         System.out.println("Algorithm: " + ANSI.BOLD + ANSI.BLUE + notice + ANSI.RESET);
         System.out.println(ANSI.ORANGE + "How would like to input your dataset?" + ANSI.RESET);
-        System.out.println("1) Input the dataset");
-        System.out.println("2) Upload file containing dataset");
+        System.out.println("1) Enter the dataset");
+        System.out.println("2) Read from file containing dataset");
         System.out.println("0) Back");
 
         // Choice entry
@@ -206,7 +205,7 @@ public class StageController
     }
 
     public void fileDoesNotExistError() {
-        System.out.println(ANSI.RED + "⚠️: The file you are trying to read from does not exist" + ANSI.RESET);
+        System.out.println(ANSI.RED + "⚠️: The specified file could not be found. Please ensure the file exists and the path is correct." + ANSI.RESET);
     }
 
 }
