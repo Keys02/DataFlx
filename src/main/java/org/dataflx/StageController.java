@@ -102,15 +102,7 @@ public class StageController
             String numbersInput = fileReader.readLine();
             System.out.println("Dataset read from file: " + ANSI.PURPLE + "[" + numbersInput + "]" + ANSI.RESET);
 
-            //Build the dataset from string
-            String[] numbersToArr = numbersInput.split("[,\\s+(, )]+"); // Splitting with multiple delimiters
-
-            ArrayList<Double> nums = new ArrayList<Double>(numbersToArr.length);
-
-            for (String s : numbersToArr) {
-                nums.add(Double.parseDouble(s));
-            }
-            return nums;
+            return this.buildDataSet(filePath, numbersInput);
         } catch (IOException e) {
             this.fileDoesNotExistError();
             System.exit(0);
@@ -127,6 +119,11 @@ public class StageController
         // Enter dataset
         String numbersInput = scanner.nextLine();
 
+        return this.buildDataSet(scanner, numbersInput);
+    }
+
+    private ArrayList<Double> buildDataSet(Scanner scanner, String numbersInput) {
+        // Enter dataset
         String[] numbersToArr = numbersInput.split("[,\\s+(, )]+"); // Splitting with multiple delimiters
 
         ArrayList<Double> nums = new ArrayList<Double>(numbersToArr.length);
@@ -136,7 +133,6 @@ public class StageController
         }
         return nums;
     }
-
 
     public double searchNumber(Scanner scanner, String notice) {
         System.out.print("\n");
