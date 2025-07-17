@@ -48,16 +48,16 @@ public class ApplicationController
                     break;
                 case 1: {
                     // Sequential search
-                        List<Double> userDataSet = this.processDataSetEntryMethod(new Scanner(System.in), "Sequential search", "Searching");
-                        double searchedNum = stageController.searchNumber(new Scanner(System.in), "Sequential search");
-                        int searchedNumIndex = AlgorithmRepository.sequentialSearch(userDataSet, searchedNum);
-                        stageController.searchOperationResult(searchedNumIndex, "Sequential search", "O(n)");
-                        break;
+                    List<Double> userDataSet = this.processDataSetEntryMethod(new Scanner(System.in), "Sequential search", "Searching");
+                    double searchedNum = stageController.searchNumber(new Scanner(System.in), "Sequential search");
+                    int searchedNumIndex = AlgorithmRepository.sequentialSearch(userDataSet, searchedNum);
+                    stageController.searchOperationResult(searchedNumIndex, "Sequential search", "O(n)");
+                    break;
                 }
 
                 case 2: {
                     // Binary search
-                    List<Double> userDataSet = stageController.inputDataSet(new Scanner(System.in), "Binary search");
+                    List<Double> userDataSet = this.processDataSetEntryMethod(new Scanner(System.in), "Sequential search", "Searching");
                     double searchedNum = stageController.searchNumber(new Scanner(System.in), "Binary search");
                     int searchedNumIndex = AlgorithmRepository.binarySearch(userDataSet, searchedNum);
                     stageController.searchOperationResult(searchedNumIndex, "Binary search", "O(log n)");
@@ -106,7 +106,7 @@ public class ApplicationController
 
                 case 1: {
                     // Bubble sort
-                    List<Double> userDataSet = stageController.inputDataSet(new Scanner(System.in), "Bubble sort");
+                    List<Double> userDataSet = this.processDataSetEntryMethod(new Scanner(System.in), "Bubble sort", "Sorting");
                     String sortedArray = stageController.makeSortedListReadable(AlgorithmRepository.bubbleSort(userDataSet));
                     stageController.sortOperationResult(sortedArray, "Bubble sort", "O(n²)");
                     break;
@@ -114,7 +114,7 @@ public class ApplicationController
 
                 case 2: {
                     // Quick sort
-                    List<Double> userDataSet = stageController.inputDataSet(new Scanner(System.in), "Quick sort");
+                    List<Double> userDataSet = this.processDataSetEntryMethod(new Scanner(System.in), "Quick sort", "Sorting");
                     String sortedArray = stageController.makeSortedListReadable(AlgorithmRepository.quickSort(userDataSet, 0, userDataSet.size() - 1));
                     stageController.sortOperationResult(sortedArray, "Quick sort", "0(n²)");
                     break;
@@ -122,7 +122,7 @@ public class ApplicationController
 
                 case 3: {
                     // Insertion sort
-                    List<Double> userDataSet = stageController.inputDataSet(new Scanner(System.in), "Insertion sort");
+                    List<Double> userDataSet = this.processDataSetEntryMethod(new Scanner(System.in), "Insertion sort", "Sorting");
                     String sortedArray = stageController.makeSortedListReadable(AlgorithmRepository.insertionSort(userDataSet));
                     stageController.sortOperationResult(sortedArray, "Insertion sort", "0(n²)");
                     break;
@@ -130,7 +130,7 @@ public class ApplicationController
 
                 case 4: {
                     // Merge sort
-                    List<Double> userDataSet = stageController.inputDataSet(new Scanner(System.in), "Merge sort");
+                    List<Double> userDataSet = this.processDataSetEntryMethod(new Scanner(System.in), "Merge sort", "Sorting");
                     String sortedArray = stageController.makeSortedListReadable(Objects.requireNonNull(AlgorithmRepository.mergeSort(userDataSet, 0, userDataSet.size() - 1)));
                     stageController.sortOperationResult(sortedArray, "Merge sort", "O(n log n)");
                     break;
@@ -138,7 +138,7 @@ public class ApplicationController
 
                 case 5: {
                     // Heap sort
-                    List<Double> userDataSet = stageController.inputDataSet(new Scanner(System.in), "Heap sort");
+                    List<Double> userDataSet = this.processDataSetEntryMethod(new Scanner(System.in), "Heap sort", "Sorting");
                     String sortedArray = stageController.makeSortedListReadable(AlgorithmRepository.heapSort(userDataSet));
                     stageController.sortOperationResult(sortedArray, "Heap sort", "O(n log n)");
                     break;
@@ -146,7 +146,7 @@ public class ApplicationController
 
                 case 6: {
                     // Radix sort
-                    List<Double> userDataSet = stageController.inputDataSet(new Scanner(System.in), "Radix sort");
+                    List<Double> userDataSet = this.processDataSetEntryMethod(new Scanner(System.in), "Radix sort", "Sorting");
                     String sortedArray = stageController.makeSortedListReadable(AlgorithmRepository.radixSort(userDataSet));
                     stageController.sortOperationResult(sortedArray, "Radix sort", "O(nk)");
                     break;
@@ -154,7 +154,7 @@ public class ApplicationController
 
                 case 7: {
                     // Shell sort
-                    List<Double> userDataSet = stageController.inputDataSet(new Scanner(System.in), "Shell sort");
+                    List<Double> userDataSet = this.processDataSetEntryMethod(new Scanner(System.in), "Shell sort", "Sorting");
                     String sortedArray = stageController.makeSortedListReadable(AlgorithmRepository.shellSort(userDataSet));
                     stageController.sortOperationResult(sortedArray, "Shell sort", "0(n²)");
                     break;
@@ -162,7 +162,7 @@ public class ApplicationController
 
                 case 8: {
                     // Bucket sort
-                    List<Double> userDataSet = stageController.inputDataSet(new Scanner(System.in), "Bucket sort");
+                    List<Double> userDataSet = this.processDataSetEntryMethod(new Scanner(System.in), "Bucket sort", "Sorting");
                     String sortedArray = stageController.makeSortedListReadable(Objects.requireNonNull(AlgorithmRepository.bucketSort(userDataSet)));
                     stageController.sortOperationResult(sortedArray, "Bucket sort", "O(n²)");
                     break;
