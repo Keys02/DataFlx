@@ -81,7 +81,7 @@ public class ApplicationController
 
         String reflashAppResponse = stageController.reflashApp(new Scanner(System.in));
 
-        if (reflashAppResponse.equalsIgnoreCase("y")) {
+        if (reflashAppResponse.equalsIgnoreCase("y") || reflashAppResponse.equalsIgnoreCase("yes")) {
             this.flushApp();
         } else {
             System.exit(0);
@@ -182,7 +182,7 @@ public class ApplicationController
 
         String reflashAppResponse = stageController.reflashApp(new Scanner(System.in));
 
-        if (reflashAppResponse.equalsIgnoreCase("y")) {
+        if (reflashAppResponse.equalsIgnoreCase("y") || reflashAppResponse.equalsIgnoreCase("yes")) {
             this.flushApp();
         } else {
             System.exit(0);
