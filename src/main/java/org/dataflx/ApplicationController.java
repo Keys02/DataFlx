@@ -193,10 +193,11 @@ public class ApplicationController
                 !reflashAppResponse.equalsIgnoreCase("y") ||
                 !reflashAppResponse.equalsIgnoreCase("n") ||
                 !reflashAppResponse.equalsIgnoreCase("yes") ||
-                !reflashAppResponse.equalsIgnoreCase("no")) {
-            stageController.unrecognizedChoiceError();
-            reflashAppResponse = stageController.reflashApp(new Scanner(System.in));
-            this.checkReflashAppResponse(reflashAppResponse);
+                !reflashAppResponse.equalsIgnoreCase("no")
+        ) {
+                stageController.unrecognizedChoiceError();
+                reflashAppResponse = stageController.reflashApp(new Scanner(System.in));
+                this.checkReflashAppResponse(reflashAppResponse);
         }
     }
 
