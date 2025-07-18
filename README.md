@@ -30,7 +30,7 @@
 
 ---
 
-## 📁 Supported File Input Format
+## 📁 Supports Reading from file
 - Only `.txt` files are supported
 - Values must be separated by **commas** or **spaces**
 - **Newline-separated values are not supported**
