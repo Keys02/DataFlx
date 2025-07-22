@@ -37,5 +37,3 @@
 
 ## 📸Screenshot
 ![DataFlx screenshot](screenshots/DataFlx_two.gif)
-
-#### Author: Keys🚀
