@@ -1,5 +1,6 @@
 package org.dataflx;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -88,7 +89,7 @@ public class StageController
         }
     }
 
-    public ArrayList<Double> readFromFile(Scanner filePath, String notice) {
+    public ArrayList<Double> readFromFile(Scanner filePath, String notice) throws FileNotFoundException {
         System.out.print("\n");
         System.out.println("Algorithm: " + ANSI.BOLD + ANSI.BLUE + notice + ANSI.RESET);
         System.out.println(ANSI.ORANGE + "Enter the name of the file containing the dataset" + ANSI.RESET);
@@ -104,9 +105,9 @@ public class StageController
             return this.buildDataSet(filePath, numbersInput);
         } catch (IOException e) {
             this.fileDoesNotExistError();
-            System.exit(0);
+            throw new FileNotFoundException("The specified file could not be found. Please ensure the file exists and the path is correct.");
         }
-        return null;
+//        return null;
     }
 
     public ArrayList<Double> inputDataSet(Scanner scanner, String notice) {

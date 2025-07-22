@@ -1,4 +1,5 @@
 package org.dataflx;
+import java.io.FileNotFoundException;
 import java.util.*;
 
 public class ApplicationController
@@ -222,7 +223,11 @@ public class ApplicationController
                     break;
                 }
                 case 2: {
-                    dataSet = stageController.readFromFile(scanner, notice);
+                    try {
+                        dataSet = stageController.readFromFile(scanner, notice);
+                    } catch(FileNotFoundException e) {
+                        this.flushApp();
+                    }
                     break;
                 }
                 default: {
