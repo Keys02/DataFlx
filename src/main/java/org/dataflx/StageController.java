@@ -100,7 +100,7 @@ public class StageController
             BufferedReader fileReader = new BufferedReader(new FileReader(file));
             String numbersInput = fileReader.readLine();
             System.out.println("Dataset read from file: " + ANSI.PURPLE + "[" + numbersInput + "]" + ANSI.RESET);
-
+            fileReader.close();
             return this.buildDataSet(filePath, numbersInput);
         } catch (IOException e) {
             this.fileDoesNotExistError();

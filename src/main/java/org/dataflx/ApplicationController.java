@@ -32,7 +32,7 @@ public class ApplicationController
             } else {
                 stageController.invalidInputError();
             }
-            flushApp();
+            this.flushApp();
         }
     }
 
