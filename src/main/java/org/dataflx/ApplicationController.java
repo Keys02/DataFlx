@@ -58,7 +58,7 @@ public class ApplicationController
 
                 case 2: {
                     // Binary search
-                    List<Double> userDataSet = this.processDataSetEntryMethod(new Scanner(System.in), "Sequential search", "Searching");
+                    List<Double> userDataSet = this.processDataSetEntryMethod(new Scanner(System.in), "Binary search", "Searching");
                     double searchedNum = stageController.searchNumber(new Scanner(System.in), "Binary search");
                     int searchedNumIndex = AlgorithmRepository.binarySearch(userDataSet, searchedNum);
                     stageController.searchOperationResult(searchedNumIndex, "Binary search", "O(log n)");
